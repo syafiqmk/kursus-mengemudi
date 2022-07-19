@@ -8,6 +8,7 @@
     {{-- link css --}}
     <link rel="stylesheet" href="/css/bootstrap.css">
     <style>
+
         body {
             min-height: 100vh;
         }
@@ -19,8 +20,13 @@
             color: white;
         }
 
-        .section {
+        section {
             min-height: 100vh;
+        }
+
+        .auth a {
+            text-decoration: none;
+            color: white;
         }
 
     </style>
@@ -30,16 +36,38 @@
     <header class="content d-flex flex-column min-vh-100 align-items-center justify-content-center my-auto">
         <h1>Kursus Mengemudi</h1>
         <p>Belajar Mengemudi dengan cepat dan mudah dengan layanan kami.</p>
-        <a href="#" class="btn btn-primary">Get Started</a>
+        <a href="#paket" class="btn btn-primary">Get Started</a>
+        @if (auth()->guest())
+            <p class="auth mt-4"><a href="">Login</a> | <a href="">Register</a></p>
+        @else
+            @if (auth()->user()->role =='admin')
+                <p class="auth mt-4"><a href="">Dashboard</a></p>
+            @elseif(auth()->user()->role =='instructor')
+                <p class="auth mt-4"><a href="">Dashboard</a></p>
+            @elseif(auth()->user()->role =='student')
+                <p class="auth mt-4"><a href="">Dashboard</a></p>
+            @endif
+        @endif
     </header>
 
-    <section>
-
+    <section class="container py-4" id="paket">
+        <h2 class="text-center">Paket Kursus Mengemudi</h2>
     </section>
 
 
     {{-- link script --}}
     <script src="/js/jquery-3.6.0.js"></script>
     <script src="/js/bootstrap.bundle.js"></script>
+    <script>
+        $(document).on('click', 'a[href^="#"]', function(e) {
+            e.preventDefault();
+
+            $('html, body').animate({
+                scrollTop: $($.attr(this, 'href')).offset().top
+            }, 800)
+
+            return false
+        })
+    </script>
 </body>
 </html>
