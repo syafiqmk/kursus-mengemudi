@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->string('registration_number');
+            $table->string('registration_number')->unique();
             $table->string('image')->nullable();
             $table->string('name');
             $table->integer('engine_capacity');
