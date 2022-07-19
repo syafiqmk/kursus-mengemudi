@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Transmission;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +22,20 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@mail.com',
+            'password' => bcrypt('passadmin'),
+            'role' => 'admin',
+        ]);
+
+        Transmission::create([
+            'name' => 'Automatic'
+        ]);
+
+        Transmission::create([
+            'name' => 'Manual'
+        ]);
     }
 }
