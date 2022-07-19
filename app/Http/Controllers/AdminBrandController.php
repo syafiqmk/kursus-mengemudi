@@ -16,7 +16,7 @@ class AdminBrandController extends Controller
     {
         return view('admin.brand.index', [
             'title' => 'Brand',
-            'brands' => Brand::latest()->paginate(5),
+            'brands' => Brand::latest()->paginate(10),
         ]);
     }
 
