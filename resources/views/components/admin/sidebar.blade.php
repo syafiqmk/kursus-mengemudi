@@ -14,6 +14,13 @@
               Brand
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link {{ (Request::is('admin/car*')) ? 'active' : '' }}" href="{{ route('car.index') }}">
+              <span data-feather="truck" class="align-text-bottom"></span>
+              Car
+            </a>
+          </li>
           
         </ul>
 

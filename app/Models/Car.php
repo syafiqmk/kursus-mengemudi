@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Brand;
+use App\Models\Transmission;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Car extends Model
 {
@@ -14,10 +16,10 @@ class Car extends Model
     protected $with = ['brand', 'transmission'];
 
     public function brand() {
-        return $this->BelongsTo(Brand::class);
+        return $this->belongsTo(Brand::class);
     }
 
     public function transmission() {
-        return $this->BelongsTo(Transmission::class);
+        return $this->belongsTo(Transmission::class);
     }
 }

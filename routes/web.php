@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminBrandController;
 
 /*
@@ -32,4 +33,5 @@ Route::middleware('isAdmin')->group(function() {
     });
 
     Route::resource('/admin/brand', AdminBrandController::class)->except('show');
+    Route::resource('/admin/car', AdminCarController::class);
 });

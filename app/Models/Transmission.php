@@ -10,7 +10,6 @@ class Transmission extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $with = ['car'];
 
     public function car() {
         return $this->hasMany(Car::class);
