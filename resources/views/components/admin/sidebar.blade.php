@@ -9,7 +9,7 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link {{ (Request::is('admin/brand*')) ? 'active' : '' }}" href="#">
+            <a class="nav-link {{ (Request::is('admin/brand*')) ? 'active' : '' }}" href="{{ route('brand.index') }}">
               <span data-feather="bold" class="align-text-bottom"></span>
               Brand
             </a>

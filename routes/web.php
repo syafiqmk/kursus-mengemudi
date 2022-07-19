@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminBrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +30,6 @@ Route::middleware('isAdmin')->group(function() {
             'title' => 'Dashboard Admin'
         ]);
     });
+
+    Route::resource('/admin/brand', AdminBrandController::class)->except('show');
 });
