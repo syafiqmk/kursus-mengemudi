@@ -38,14 +38,14 @@
         <p>Belajar Mengemudi dengan cepat dan mudah dengan layanan kami.</p>
         <a href="#paket" class="btn btn-primary">Get Started</a>
         @if (auth()->guest())
-            <p class="auth mt-4"><a href="">Login</a> | <a href="">Register</a></p>
+            <p class="auth mt-4"><a href="{{ route('login') }}">Login</a> | <a href="{{ route('register') }}">Register</a></p>
         @else
             @if (auth()->user()->role =='admin')
-                <p class="auth mt-4"><a href="">Dashboard</a></p>
+                <p class="auth mt-4"><a href="/admin">Dashboard</a></p>
             @elseif(auth()->user()->role =='instructor')
-                <p class="auth mt-4"><a href="">Dashboard</a></p>
+                <p class="auth mt-4"><a href="/instructor">Dashboard</a></p>
             @elseif(auth()->user()->role =='student')
-                <p class="auth mt-4"><a href="">Dashboard</a></p>
+                <p class="auth mt-4"><a href="/student">Dashboard</a></p>
             @endif
         @endif
     </header>
