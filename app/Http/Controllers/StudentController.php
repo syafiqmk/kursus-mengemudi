@@ -27,6 +27,11 @@ class StudentController extends Controller
     }
 
     public function enrollProcess($package, $car) {
+        $carg = Car::find($car);
+
+        $status = $carg->update([
+            'status' => 'not ready',
+        ]);
         $enroll = Enroll::create([
             'user_id' => auth()->user()->id,
             'package_id' => $package,
@@ -34,7 +39,8 @@ class StudentController extends Controller
             'status' => 'enroll',
         ]);
 
-        if ($enroll) {
+
+        if ($enroll && $status) {
             return redirect('/student/enrollment')->with('enroll-success', 'Berhasil Enroll Paket!');
         } else {
             return redirect('/student')->with('enroll-fail', 'Gagal Enroll Paket!');

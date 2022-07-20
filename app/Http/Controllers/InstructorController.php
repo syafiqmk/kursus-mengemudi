@@ -29,6 +29,10 @@ class InstructorController extends Controller
         $instructor = User::find(auth()->user()->id);
         $car = Car::find($enroll->car_id);
 
+        $cars = $car->update([
+            'status' => 'ready'
+        ]);
+
         $status = $instructor->update([
             'status' => 'ready'
         ]);
@@ -36,7 +40,7 @@ class InstructorController extends Controller
             'status' => 'finish'
         ]);
 
-        if ($finish && $status) {
+        if ($finish && $status && $cars) {
             return redirect('/instructor')->with('finish-success', 'Kursus Selesai');
         } else {
             return redirect('/instructor')->with('finish-fail', 'Kursus Selesai {error}');

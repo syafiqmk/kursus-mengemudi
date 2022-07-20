@@ -25,9 +25,9 @@ class AdminController extends Controller
 
     public function enrollProcess($enroll, $instructor) {
         $enroll = Enroll::find($enroll);
-        $instructor = User::find($instructor);
+        $instructorg = User::find($instructor);
 
-        $status = $instructor->update([
+        $status = $instructorg->update([
             'status' => 'not ready'
         ]);
 
