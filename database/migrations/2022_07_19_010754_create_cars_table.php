@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('name');
             $table->integer('engine_capacity');
+            $table->string('status');
             $table->foreignId('brand_id');
             $table->foreignId('transmission_id');
             $table->timestamps();
