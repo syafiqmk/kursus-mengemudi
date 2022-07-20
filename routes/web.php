@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminBrandController;
 use App\Http\Controllers\AdminPackageController;
@@ -38,4 +39,14 @@ Route::middleware('isAdmin')->group(function() {
     Route::resource('/admin/car', AdminCarController::class);
     Route::resource('/admin/instructor', AdminInstructorController::class);
     Route::resource('/admin/package', AdminPackageController::class);
+});
+
+Route::middleware('isStudent')->group(function() {
+    Route::get('/student', [StudentController::class, 'index'])->name('studentIndex');
+    Route::get('/student/enroll/{id}', [StudentController::class, 'enroll'])->name('studentEnroll');
+    Route::post('/student/enroll/{package}/{car}', [StudentController::class, 'enrollProcess']);
+    Route::get('/student/enrollment', [StudentController::class, 'enrollment']);
+    Route::get('/student/enrollment', [StudentController::class, 'enrollment']);
+    Route::get('/student/enroll/pay/{enroll}', [StudentController::class, 'pay']);
+    Route::post('/student/enroll/pay/process/{enroll}', [StudentController::class, 'payProcess']);
 });
