@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminBrandController;
+use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\AdminPackageController;
 use App\Http\Controllers\AdminInstructorController;
 
@@ -54,4 +55,10 @@ Route::middleware('isStudent')->group(function() {
     Route::get('/student/enrollment', [StudentController::class, 'enrollment']);
     Route::get('/student/enroll/pay/{enroll}', [StudentController::class, 'pay']);
     Route::post('/student/enroll/pay/process/{enroll}', [StudentController::class, 'payProcess']);
+});
+
+Route::middleware('isInstructor')->group(function() {
+    Route::get('/instructor', [InstructorController::class ,'index']);
+    Route::get('/instructor/enroll/{enroll}', [InstructorController::class, 'enroll']);
+    Route::put('/instructor/enroll/{enroll}/finish', [InstructorController::class, 'finish']);
 });

@@ -24,4 +24,8 @@ class enroll extends Model
     public function car() {
         return $this->belongsTo(Car::class);
     }
+
+    public function instructor() {
+        return $this->belongsTo(User::class);
+    }
 }
