@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminBrandController;
+use App\Http\Controllers\AdminPackageController;
 use App\Http\Controllers\AdminInstructorController;
 
 /*
@@ -36,4 +37,5 @@ Route::middleware('isAdmin')->group(function() {
     Route::resource('/admin/brand', AdminBrandController::class)->except('show');
     Route::resource('/admin/car', AdminCarController::class);
     Route::resource('/admin/instructor', AdminInstructorController::class);
+    Route::resource('/admin/package', AdminPackageController::class);
 });

@@ -5,17 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transmission extends Model
+class Package extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $with = ['transmission'];
 
-    public function car() {
-        return $this->hasMany(Car::class);
-    }
-
-    public function package() {
-        return $this->hasMany(Package::class);
+    public function transmission() {
+        return $this->belongsTo(Transmission::class);
     }
 }

@@ -28,6 +28,13 @@
               Instructor
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link {{ (Request::is('admin/package*')) ? 'active' : '' }}" href="{{ route('package.index') }}">
+              <span data-feather="package" class="align-text-bottom"></span>
+              Package
+            </a>
+          </li>
           
         </ul>
 
