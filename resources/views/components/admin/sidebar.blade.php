@@ -21,6 +21,13 @@
               Car
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link {{ (Request::is('admin/instructor*')) ? 'active' : '' }}" href="{{ route('instructor.index') }}">
+              <span data-feather="user" class="align-text-bottom"></span>
+              Instructor
+            </a>
+          </li>
           
         </ul>
 
