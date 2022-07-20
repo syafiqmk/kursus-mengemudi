@@ -25,13 +25,18 @@ class AdminController extends Controller
 
     public function enrollProcess($enroll, $instructor) {
         $enroll = Enroll::find($enroll);
+        $instructor = User::find($instructor);
+
+        $status = $instructor->update([
+            'status' => 'not ready'
+        ]);
 
         $grant = $enroll->update([
             'instructor_id' => $instructor,
             'status' => 'grant',
         ]);
 
-        if($grant) {
+        if($grant && $status) {
             return redirect('/admin/enroll')->with('pay-confirm-success', 'Payment Confirmation Success!');
         } else {
             return redirect('/admin/enroll')->with('pay-confirm-fail', 'Payment Confirmation Failed!');

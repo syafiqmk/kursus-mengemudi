@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Enroll;
+use App\Models\User;
+use App\Models\Car;
 use Illuminate\Http\Request;
 
 class InstructorController extends Controller
@@ -24,11 +26,17 @@ class InstructorController extends Controller
 
     public function finish($enroll) {
         $enroll = Enroll::find($enroll);
+        $instructor = User::find(auth()->user()->id);
+        $car = Car::find($enroll->car_id);
+
+        $status = $instructor->update([
+            'status' => 'ready'
+        ]);
         $finish = $enroll->update([
             'status' => 'finish'
         ]);
 
-        if ($finish) {
+        if ($finish && $status) {
             return redirect('/instructor')->with('finish-success', 'Kursus Selesai');
         } else {
             return redirect('/instructor')->with('finish-fail', 'Kursus Selesai {error}');
