@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2022 at 09:16 AM
+-- Generation Time: Jul 21, 2022 at 04:56 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -34,13 +34,6 @@ CREATE TABLE `brands` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `brands`
---
-
-INSERT INTO `brands` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Daihatsu', '2022-07-19 18:25:00', '2022-07-19 18:25:00');
-
 -- --------------------------------------------------------
 
 --
@@ -60,14 +53,6 @@ CREATE TABLE `cars` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `cars`
---
-
-INSERT INTO `cars` (`id`, `registration_number`, `image`, `name`, `engine_capacity`, `status`, `brand_id`, `transmission_id`, `created_at`, `updated_at`) VALUES
-(1, 'KT 123 ABC', 'images/car/rbetWpVUb08y9r6XyBZ0C6VPepWAbUWfKM49l0GO.jpg', 'Xenia', 1300, 'ready', 1, 2, '2022-07-19 18:25:41', '2022-07-19 23:02:13'),
-(2, 'KT 1235 ABC', 'images/car/vtDhY8BR3nGy9aMsfVi6rT1TNnz8FGTXnSuNOfIV.jpg', 'Xenia', 1300, 'ready', 1, 1, '2022-07-19 23:03:17', '2022-07-19 23:03:17');
-
 -- --------------------------------------------------------
 
 --
@@ -85,14 +70,6 @@ CREATE TABLE `enrolls` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `enrolls`
---
-
-INSERT INTO `enrolls` (`id`, `user_id`, `package_id`, `car_id`, `instructor_id`, `status`, `payment_image`, `created_at`, `updated_at`) VALUES
-(1, 3, 2, 1, 2, 'finish', 'images/payment/3UHBqdVeU5tLZiyfKo6eCrzuNjb3tJymrzOhkf8U.jpg', '2022-07-19 19:33:57', '2022-07-19 22:22:12'),
-(2, 3, 2, 1, 2, 'finish', 'images/payment/uDSzTwVRAkF2cphsXBAMGSeAPlEWW1J08iFDiCBL.jpg', '2022-07-19 22:56:48', '2022-07-19 23:02:13');
 
 -- --------------------------------------------------------
 
@@ -134,8 +111,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2022_07_19_010754_create_cars_table', 1),
 (6, '2022_07_19_010809_create_brands_table', 1),
 (7, '2022_07_19_010828_create_transmissions_table', 1),
-(8, '2022_07_20_013142_create_packages_table', 2),
-(9, '2022_07_20_031146_create_enrolls_table', 3);
+(8, '2022_07_20_013142_create_packages_table', 1),
+(9, '2022_07_20_031146_create_enrolls_table', 1);
 
 -- --------------------------------------------------------
 
@@ -152,13 +129,6 @@ CREATE TABLE `packages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `packages`
---
-
-INSERT INTO `packages` (`id`, `name`, `detail`, `price`, `transmission_id`, `created_at`, `updated_at`) VALUES
-(2, 'Paket Manual', 'Pilih paket ini untuk belajar mengemudi mobil bertransmisi manual.', 1000000, 2, '2022-07-19 18:27:02', '2022-07-19 18:27:02');
 
 -- --------------------------------------------------------
 
@@ -208,8 +178,8 @@ CREATE TABLE `transmissions` (
 --
 
 INSERT INTO `transmissions` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Automatic', '2022-07-19 16:33:57', '2022-07-19 16:33:57'),
-(2, 'Manual', '2022-07-19 16:33:57', '2022-07-19 16:33:57');
+(1, 'Automatic', '2022-07-20 18:35:01', '2022-07-20 18:35:01'),
+(2, 'Manual', '2022-07-20 18:35:01', '2022-07-20 18:35:01');
 
 -- --------------------------------------------------------
 
@@ -236,9 +206,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `photo`, `email`, `email_verified_at`, `password`, `role`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', NULL, 'admin@mail.com', NULL, '$2y$10$PT1/wLIZp7eQJppHW3uIvOE4YeN4P7CcdIHPnD19hrN158jKNmaZK', 'admin', NULL, NULL, '2022-07-19 16:33:57', '2022-07-19 16:33:57'),
-(2, 'Ken Block', 'images/instructor/J1L1NUw18b7EveIUQDzML5k6vl1Lf1dUbRcAMZLw.jpg', 'block@mail.com', NULL, '$2y$10$9hWv8XRJZ6Et/4f/gki0TO9peVj74RTQd5BnWkYFfrYUwPHCbrgoG', 'instructor', 'ready', NULL, '2022-07-19 16:47:05', '2022-07-19 23:00:13'),
-(3, 'Syafiq Muhammad Kahfi', NULL, 'syafiq@mail.com', NULL, '$2y$10$0RLfshJWMzydDddsKLzjnuGL7JjWqAEBbNCD8RtOfbXorXTo.hQIi', 'student', NULL, NULL, '2022-07-19 18:30:31', '2022-07-19 18:30:31');
+(1, 'admin', NULL, 'admin@mail.com', NULL, '$2y$10$Q/TzwJlfG5oVTRfNsDmEmuodiuwlcraWUpdORjCZnn/mQw2281bFi', 'admin', NULL, NULL, '2022-07-20 18:35:01', '2022-07-20 18:35:01'),
+(2, 'Syafiq Muhammad Kahfi', 'images/student/xhR4QN3Gu3jB9RD0nCYFyNOXn0ecnMZDxX4jU2eO.jpg', 'syafiq@mail.com', NULL, '$2y$10$gg4kiWGclRQli.WmoXkj0OMLCUyRDKi7Y0lTIiyE4JQ2qPskTw9jG', 'student', NULL, NULL, '2022-07-20 18:35:19', '2022-07-20 18:52:42');
 
 --
 -- Indexes for dumped tables
@@ -317,19 +286,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `enrolls`
 --
 ALTER TABLE `enrolls`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -347,7 +316,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -365,7 +334,7 @@ ALTER TABLE `transmissions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
