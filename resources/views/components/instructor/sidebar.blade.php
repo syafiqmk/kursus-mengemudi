@@ -7,6 +7,12 @@
               Dashboard
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {{ (Request::is('instructor/profile')) ? 'active' : '' }}" aria-current="page" href="/instructor/profile">
+              <span data-feather="user" class="align-text-bottom"></span>
+              Profile
+            </a>
+          </li>
           
         </ul>
 

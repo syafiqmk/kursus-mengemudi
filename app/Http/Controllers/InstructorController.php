@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Enroll;
-use App\Models\User;
 use App\Models\Car;
+use App\Models\User;
+use App\Models\Enroll;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class InstructorController extends Controller
 {
@@ -44,6 +48,62 @@ class InstructorController extends Controller
             return redirect('/instructor')->with('finish-success', 'Kursus Selesai');
         } else {
             return redirect('/instructor')->with('finish-fail', 'Kursus Selesai {error}');
+        }
+    }
+
+    // profiles
+    public function profile() {
+        return view('instructor.profile', [
+            'title' => auth()->user()->name,
+            'user' => auth()->user()
+        ]);
+    }
+
+    public function profileEdit(Request $request) {
+        $user = User::find(auth()->user()->id);
+        $oldPass = auth()->user()->getAuthPassword();
+
+        if ($request['new-pass'] == '') {
+            $request['new-pass'] = $request['old-pass'];
+        }
+
+        $credentials = $request->validate([
+            'name' => 'required|min:3|max:100',
+            'email' => 'required|email',
+            'new-pass' => 'required|min:6',
+            'photo' => 'file|image'
+        ]);
+
+
+        if(Hash::check($request['old-pass'], $oldPass)) {
+            if($request->file('photo')) {
+                if ($user->photo) {
+                    Storage::delete($user->photo);
+                }
+                
+                $credentials['photo'] = $request->file('photo')->store('images/instructor');
+
+                $update = $user->update([
+                    'name' => $credentials['name'],
+                    'email' => $credentials['email'],
+                    'password' => bcrypt($credentials['new-pass']),
+                    'photo' => $credentials['photo']
+                ]);
+            } else {
+                $update = $user->update([
+                    'name' => $credentials['name'],
+                    'email' => $credentials['email'],
+                    'password' => bcrypt($credentials['new-pass']),
+                ]);
+            }
+
+            if($update) {
+                return redirect('/instructor/profile')->with('update-success', 'Update Profile Berhasil!');
+            } else {
+                return redirect('/instructor/profile')->with('update-fail', 'Update Profile Gagal!');
+            }
+        } else {
+            return redirect('/instructor/profile')->with('wrong-pass', 'Password Salah!');
         }
     }
 }

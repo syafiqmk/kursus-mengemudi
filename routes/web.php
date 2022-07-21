@@ -55,10 +55,14 @@ Route::middleware('isStudent')->group(function() {
     Route::get('/student/enrollment', [StudentController::class, 'enrollment']);
     Route::get('/student/enroll/pay/{enroll}', [StudentController::class, 'pay']);
     Route::post('/student/enroll/pay/process/{enroll}', [StudentController::class, 'payProcess']);
+    Route::get('/student/profile', [StudentController::class, 'profile']);
+    Route::put('/student/profile/edit', [StudentController::class, 'profileEdit']);
 });
 
 Route::middleware('isInstructor')->group(function() {
     Route::get('/instructor', [InstructorController::class ,'index']);
     Route::get('/instructor/enroll/{enroll}', [InstructorController::class, 'enroll']);
     Route::put('/instructor/enroll/{enroll}/finish', [InstructorController::class, 'finish']);
+    Route::get('/instructor/profile', [InstructorController::class, 'profile']);
+    Route::put('/instructor/profile/edit', [InstructorController::class, 'profileEdit']);
 });
