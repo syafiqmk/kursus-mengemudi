@@ -38,7 +38,7 @@
           
           <li class="nav-item">
             <a class="nav-link {{ (Request::is('admin/enroll*')) ? 'active' : '' }}" href="/admin/enroll">
-              <span data-feather="package" class="align-text-bottom"></span>
+              <span data-feather="credit-card" class="align-text-bottom"></span>
               Payment Confirmation
             </a>
           </li>

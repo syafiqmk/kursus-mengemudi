@@ -9,7 +9,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link {{ (Request::is('student/enrollment')) ? 'active' : '' }}" aria-current="page" href="/student/enrollment">
-              <span data-feather="home" class="align-text-bottom"></span>
+              <span data-feather="package" class="align-text-bottom"></span>
               Enrollment
             </a>
           </li>
