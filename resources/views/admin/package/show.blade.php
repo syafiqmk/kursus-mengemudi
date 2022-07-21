@@ -28,6 +28,18 @@
                     <td>:</td>
                     <td>{{ $package->transmission->name }}</td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="d-flex">
+                        <a href="{{ route('package.edit', $package->id) }}" class="btn btn-primary me-1">Edit</a>
+                        <form action="{{ route('package.destroy', $package->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
