@@ -52,7 +52,6 @@ Route::middleware('isStudent')->group(function() {
     Route::get('/student/enroll/{id}', [StudentController::class, 'enroll'])->name('studentEnroll');
     Route::post('/student/enroll/{package}/{car}', [StudentController::class, 'enrollProcess']);
     Route::get('/student/enrollment', [StudentController::class, 'enrollment']);
-    Route::get('/student/enrollment', [StudentController::class, 'enrollment']);
     Route::get('/student/enroll/pay/{enroll}', [StudentController::class, 'pay']);
     Route::post('/student/enroll/pay/process/{enroll}', [StudentController::class, 'payProcess']);
     Route::get('/student/profile', [StudentController::class, 'profile']);

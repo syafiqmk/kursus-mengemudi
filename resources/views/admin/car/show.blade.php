@@ -42,9 +42,9 @@
                     <td>:</td>
                     <td>
                         @if ($car->status == 'ready')
-                            <p class="btn btn-success">Ready</p>
+                            <p class="badge fs-6 bg-success">Ready</p>
                         @else
-                            <p class="btn btn-danger">Not Ready</p>
+                            <p class="badge fs-6 bg-danger">Not Ready</p>
                         @endif
                     </td>
                 </tr>
