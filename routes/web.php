@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Package;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -23,7 +24,9 @@ use App\Http\Controllers\AdminInstructorController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'packages' => Package::latest()->get()
+    ]);
 });
 
 Route::get('/403', function () {
