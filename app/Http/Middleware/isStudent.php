@@ -16,8 +16,12 @@ class isStudent
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role !== 'student') {
-            abort(403);
+        if (auth()->check()) {
+            if (auth()->user()->role !== 'student') {
+                abort(403);
+            }
+        } else {
+            return redirect()->route('login');
         }
         return $next($request);
     }

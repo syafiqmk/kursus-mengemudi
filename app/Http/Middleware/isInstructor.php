@@ -16,8 +16,12 @@ class isInstructor
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role !== 'instructor') {
-            abort(403);
+        if (auth()->check()) {
+            if (auth()->user()->role !== 'instructor') {
+                abort(403);
+            }
+        } else {
+            return redirect()->route('login');
         }
         return $next($request);
     }
