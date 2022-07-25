@@ -18,7 +18,7 @@ class isInstructor
     {
         if (auth()->check()) {
             if (auth()->user()->role !== 'instructor') {
-                abort(403);
+                return redirect()->route('403');
             }
         } else {
             return redirect()->route('login');

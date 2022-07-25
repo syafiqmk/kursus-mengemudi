@@ -18,7 +18,7 @@ class isStudent
     {
         if (auth()->check()) {
             if (auth()->user()->role !== 'student') {
-                abort(403);
+                return redirect()->route('403');
             }
         } else {
             return redirect()->route('login');

@@ -26,6 +26,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/403', function () {
+    return view('403');
+})->name('403');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
