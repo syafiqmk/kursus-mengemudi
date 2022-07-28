@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('engine_capacity');
             $table->string('status');
-            $table->foreignId('brand_id');
+            $table->foreignId('brand_id')->constrained('brands')->onDelete('cascade');
             $table->foreignId('transmission_id');
             $table->timestamps();
         });

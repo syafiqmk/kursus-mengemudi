@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('enrolls', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('package_id');
-            $table->foreignId('car_id');
-            $table->foreignId('instructor_id')->nullable();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('package_id')->constrained('packages')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('car_id')->constrained('cars')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('instructor_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->string('status');
             $table->string('payment_image')->nullable();
             $table->timestamps();
