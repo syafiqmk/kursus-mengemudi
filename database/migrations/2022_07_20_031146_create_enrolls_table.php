@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('package_id')->constrained('packages')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('car_id')->constrained('cars')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('instructor_id')->nullable();
+            $table->foreignId('instructor_id')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');;
             $table->string('status');
             $table->string('payment_image')->nullable();
             $table->timestamps();
