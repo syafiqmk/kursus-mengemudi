@@ -13,12 +13,6 @@
               Enrollment
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link {{ (Request::is('student/profile')) ? 'active' : '' }}" aria-current="page" href="/student/profile">
-              <span data-feather="user" class="align-text-bottom"></span>
-              Profile
-            </a>
-          </li>
           
           
           
