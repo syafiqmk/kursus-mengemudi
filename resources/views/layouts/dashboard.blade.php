@@ -12,7 +12,6 @@
 
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/style.css">
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -72,11 +71,18 @@
   </head>
   <body>
     
-    @include('components.navbar')
+ @include('components.navbar')
 
 <div class="container-fluid">
   <div class="row">
-    @include('components.instructor.sidebar')
+    
+    @if (auth()->user()->role == 'admin')
+      @include('components.sidebar.admin')
+    @elseif (auth()->user()->role == 'student')
+      @include('components.sidebar.student')
+    @elseif (auth()->user()->role == 'instructor')
+      @include('components.sidebar.instructor')
+    @endif
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
