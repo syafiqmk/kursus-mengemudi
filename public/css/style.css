@@ -1,0 +1,12 @@
+.navbar {
+    z-index: 101;
+}
+
+.navbar-brand {
+    background-color: transparent !important;
+    box-shadow: inset -1px 0 0 rgb(0 0 0 / 0%) !important;
+}
+
+.sidebar {
+    margin-top: 25px;
+}
