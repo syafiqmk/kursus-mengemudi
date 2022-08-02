@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('package_id')->constrained('packages')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('car_id')->constrained('cars')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('instructor_id')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');;
-            $table->string('status');
+            $table->enum('status', ['enroll', 'wait', 'grant', 'finish']);
             $table->string('payment_image')->nullable();
             $table->timestamps();
         });

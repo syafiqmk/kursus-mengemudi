@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('detail');
             $table->bigInteger('price');
-            $table->foreignId('transmission_id');
+            // $table->foreignId('transmission_id');
             $table->timestamps();
         });
     }

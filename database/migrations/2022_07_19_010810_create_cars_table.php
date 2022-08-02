@@ -19,9 +19,11 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('name');
             $table->integer('engine_capacity');
-            $table->string('status');
+            $table->enum('status', ['ready', 'not ready']);
+            $table->bigInteger('price')->nullable();
             $table->foreignId('brand_id')->constrained('brands')->onDelete('cascade');
-            $table->foreignId('transmission_id');
+            $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('transmission_id')->constrained('transmissions');
             $table->timestamps();
         });
     }
