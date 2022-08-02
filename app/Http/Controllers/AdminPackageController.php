@@ -31,7 +31,6 @@ class AdminPackageController extends Controller
     {
         return view('admin.package.create', [
             'title' => 'Add Package',
-            'transmissions' => Transmission::latest()->get(),
         ]);
     }
 
@@ -47,14 +46,12 @@ class AdminPackageController extends Controller
             'name' => 'required|min:3|max:100',
             'detail' => 'required',
             'price' => 'required|numeric',
-            'transmission' => 'required'
         ]);
 
         $create = package::create([
             'name' => ucwords($credentials['name']),
             'detail' => $credentials['detail'],
             'price' => $credentials['price'],
-            'transmission_id' => $credentials['transmission']
         ]);
 
         if($create) {
@@ -89,7 +86,6 @@ class AdminPackageController extends Controller
         return view('admin.package.edit', [
             'title' => 'Edit : '. $package->name,
             'package' => $package,
-            'transmissions' => Transmission::latest()->get(),
         ]);
     }
 
@@ -106,14 +102,12 @@ class AdminPackageController extends Controller
             'name' => 'required|min:3|max:100',
             'detail' => 'required',
             'price' => 'required|numeric',
-            'transmission' => 'required'
         ]);
 
         $update = $package->update([
             'name' => ucwords($credentials['name']),
             'detail' => $credentials['detail'],
             'price' => $credentials['price'],
-            'transmission_id' => $credentials['transmission']
         ]);
 
         if ($update) {

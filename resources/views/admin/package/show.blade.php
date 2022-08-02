@@ -23,11 +23,11 @@
                     <td>:</td>
                     <td>Rp. {{ $package->price }}</td>
                 </tr>
-                <tr>
+                {{-- <tr>
                     <td>Transmission</td>
                     <td>:</td>
                     <td>{{ $package->transmission->name }}</td>
-                </tr>
+                </tr> --}}
                 <tr>
                     <td></td>
                     <td></td>

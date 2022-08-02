@@ -34,14 +34,16 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $package->name }}</td>
-                    <td class="d-flex">
-                        <a href="{{ route('package.show', $package->id) }}" class="btn btn-primary me-1">Detail</a>
-                        <a href="{{ route('package.edit', $package->id) }}" class="btn btn-warning me-1">Edit</a>
+                    <td>
                         <form action="{{ route('package.destroy', $package->id) }}" method="post">
                             @csrf
                             @method('DELETE')
-
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus Data?')">Delete</button>
+                            
+                            <div class="btn-group" role="group">
+                                <a href="{{ route('package.edit', $package->id) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ route('package.show', $package->id) }}" class="btn btn-primary">Detail</a>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Hapus Data?')">Delete</button>
+                            </div>
                         </form>
                     </td>
                 </tr>

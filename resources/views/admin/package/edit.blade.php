@@ -37,7 +37,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="">Transmission</label>
                     <select name="transmission" id="" class="form-select @error('transmission') is-invalid @enderror">
                         @foreach ($transmissions as $transmission)
@@ -49,7 +49,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-                </div>
+                </div> --}}
 
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Simpan</button>
