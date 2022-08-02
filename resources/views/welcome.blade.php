@@ -36,7 +36,7 @@
     <header class="content d-flex flex-column min-vh-100 align-items-center justify-content-center my-auto">
         <h1>Kursus Mengemudi</h1>
         <p>Belajar Mengemudi dengan cepat dan mudah dengan layanan kami.</p>
-        <a href="#paket" class="btn btn-primary">Get Started</a>
+        {{-- <a href="#paket" class="btn btn-primary">Get Started</a> --}}
         @if (auth()->guest())
             <p class="auth mt-4"><a href="{{ route('login') }}">Login</a> | <a href="{{ route('register') }}">Register</a></p>
         @else
@@ -50,7 +50,7 @@
         @endif
     </header>
 
-    <section class="container py-4" id="paket">
+    {{-- <section class="container py-4" id="paket">
         <h2 class="text-center">Paket Kursus Mengemudi</h2>
         
         <table class="table">
@@ -71,7 +71,7 @@
                 @endforeach
             </tbody>
         </table>
-    </section>
+    </section> --}}
 
 
     {{-- link script --}}

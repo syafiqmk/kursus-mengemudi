@@ -1,4 +1,4 @@
-@extends('layouts.student')
+@extends('layouts.dashboard')
 
 @section('title')
     <h2>Welcome, {{ auth()->user()->name }}</h2>
