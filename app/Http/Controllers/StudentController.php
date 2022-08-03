@@ -16,7 +16,7 @@ class StudentController extends Controller
 {
     public function index() {
         return view('student.index', [
-            'title' => 'Student',
+            'title' => 'Welcome, ' . auth()->user()->name,
             'packages' => Package::all(),
         ]);
     }
@@ -24,7 +24,7 @@ class StudentController extends Controller
     public function enroll($id) {
         $package = Package::find($id);
         return view('student.enroll', [
-            'title' => 'Enroll : '. $package->name,
+            'title' => $package->name,
             'package' => $package,
             'cars' => Car::latest()->where([['transmission_id', $package->transmission_id], ['status', 'ready']])->get(),
         ]);

@@ -15,7 +15,7 @@ class InstructorController extends Controller
 {
     public function index() {
         return view('instructor.index', [
-            'title' => 'Instructor',
+            'title' => 'Welcome, '. auth()->user()->name,
             'enrolls' => Enroll::latest()->where([['instructor_id', auth()->user()->id], ['status', 'grant']])->get()
         ]);
     }
