@@ -1,9 +1,5 @@
 @extends('layouts.dashboard')
 
-@section('title')
-    <h2>{{ $title }}</h2>
-@endsection
-
 @section('content')
 
     <a href="{{ route('package.create') }}" class="btn btn-primary">Tambah</a>

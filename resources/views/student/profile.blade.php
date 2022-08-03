@@ -1,9 +1,5 @@
 @extends('layouts.dashboard')
 
-@section('title')
-    <h2>{{ $user->name }}</h2>
-@endsection
-
 @section('content')
 
     <div class="row d-flex justify-content-center">

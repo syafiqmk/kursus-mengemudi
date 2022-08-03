@@ -1,9 +1,5 @@
 @extends('layouts.dashboard')
 
-@section('title')
-    <h2>{{ $title }}</h2>
-@endsection
-
 @section('content')
     <h5>{{ $package->detail }}</h5>
     <h6>Price : Rp.{{ $package->price }}</h6>

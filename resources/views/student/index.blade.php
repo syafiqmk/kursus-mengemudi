@@ -1,9 +1,5 @@
 @extends('layouts.dashboard')
 
-@section('title')
-    <h2>Welcome, {{ auth()->user()->name }}</h2>
-@endsection
-
 @section('content')
 
     <table class="table">

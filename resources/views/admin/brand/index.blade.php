@@ -1,9 +1,5 @@
 @extends('layouts.dashboard')
 
-@section('title')
-    <h2>Brands</h2>
-@endsection
-
 @section('content')
 
     <a href="{{ Route('brand.create') }}" class="btn btn-primary">Tambah</a>

@@ -1,9 +1,5 @@
 @extends('layouts.dashboard')
 
-@section('title')
-    <h2>Cars</h2>
-@endsection
-
 @section('content')
 
     <a href="{{ Route('car.create') }}" class="btn btn-primary">Tambah</a>

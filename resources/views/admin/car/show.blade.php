@@ -1,9 +1,5 @@
 @extends('layouts.dashboard')
 
-@section('title')
-    <h2>{{ $title }}</h2>
-@endsection
-
 @section('content')
     <div class="d-flex justify-content-center mb-4">
         <img src="{{ asset('/storage/'.$car->image) }}" width="40%" class="img-fluid">
