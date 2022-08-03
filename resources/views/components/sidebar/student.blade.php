@@ -8,6 +8,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link {{ (Request::is('student/car*')) ? 'active' : '' }}" aria-current="page" href="/student/car">
+              <span data-feather="truck" class="align-text-bottom"></span>
+              Car
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link {{ (Request::is('student/enrollment')) ? 'active' : '' }}" aria-current="page" href="/student/enrollment">
               <span data-feather="package" class="align-text-bottom"></span>
               Enrollment
