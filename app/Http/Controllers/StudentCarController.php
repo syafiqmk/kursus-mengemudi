@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Brand;
+use App\Models\Transmission;
 use Illuminate\Http\Request;
 
 class StudentCarController extends Controller
@@ -26,7 +28,11 @@ class StudentCarController extends Controller
      */
     public function create()
     {
-        //
+        return view('student.car.create', [
+            'title' => "Add Your Car",
+            'brands' => Brand::latest()->get(),
+            'transmissions' => Transmission::latest()->get(),
+        ]);
     }
 
     /**
@@ -37,7 +43,11 @@ class StudentCarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credentials = $request->validate([
+            'name' => 'required|min:3|max:100',
+            'regNumber' => 'required',
+            ''
+        ]);
     }
 
     /**

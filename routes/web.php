@@ -55,15 +55,15 @@ Route::middleware('isAdmin')->group(function() {
     Route::put('/admin/enroll/{enroll}/{instructor}', [AdminController::class, 'enrollProcess']);
 });
 
-Route::middleware('isStudent')->group(function() {
-    Route::get('/student', [StudentController::class, 'index'])->name('studentIndex');
-    Route::get('/student/enroll/{id}', [StudentController::class, 'enroll'])->name('studentEnroll');
-    Route::post('/student/enroll/{package}/{car}', [StudentController::class, 'enrollProcess']);
-    Route::get('/student/enrollment', [StudentController::class, 'enrollment']);
-    Route::get('/student/enroll/pay/{enroll}', [StudentController::class, 'pay']);
-    Route::post('/student/enroll/pay/process/{enroll}', [StudentController::class, 'payProcess']);
-    Route::get('/student/profile', [StudentController::class, 'profile']);
-    Route::put('/student/profile/edit', [StudentController::class, 'profileEdit']);
+Route::middleware('isStudent')->name('student.')->group(function() {
+    Route::get('/student', [StudentController::class, 'index'])->name('index');
+    Route::get('/student/enroll/{id}', [StudentController::class, 'enroll'])->name('enroll');
+    Route::post('/student/enroll/{package}/{car}', [StudentController::class, 'enrollProcess'])->name('enrollProcess');
+    Route::get('/student/enrollment', [StudentController::class, 'enrollment'])->name('enrollment');
+    Route::get('/student/enroll/pay/{enroll}', [StudentController::class, 'pay'])->name('pay');
+    Route::post('/student/enroll/pay/process/{enroll}', [StudentController::class, 'payProcess'])->name('payProcess');
+    Route::get('/student/profile', [StudentController::class, 'profile'])->name('profile');
+    Route::put('/student/profile/edit', [StudentController::class, 'profileEdit'])->name('profileEdit');
 
     Route::resource('/student/car', StudentCarController::class);
 });
