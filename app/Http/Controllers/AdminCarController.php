@@ -80,9 +80,9 @@ class AdminCarController extends Controller
 
 
         if($create) {
-            return redirect()->route('car.index')->with('car-create-success', 'Data Car Berhasil Ditambah!');
+            return redirect()->route('car.index')->with('success', 'Data Car Berhasil Ditambah!');
         } else {
-            return redirect()->route('car.index')->with('car-create-fail', 'Data Car Gagal Ditambah!');
+            return redirect()->route('car.index')->with('danger', 'Data Car Gagal Ditambah!');
         }
     }
 
@@ -160,9 +160,9 @@ class AdminCarController extends Controller
 
 
         if ($create) {
-            return redirect()->route('car.index')->with('car-create-success', 'Data Car Berhasil Ditambah!');
+            return redirect()->route('car.index')->with('success', 'Data Car Berhasil Ditambah!');
         } else {
-            return redirect()->route('car.index')->with('car-create-fail', 'Data Car Gagal Ditambah!');
+            return redirect()->route('car.index')->with('danger', 'Data Car Gagal Ditambah!');
         }
     }
 
@@ -175,9 +175,9 @@ class AdminCarController extends Controller
     public function destroy(Car $car)
     {
         if (Storage::delete($car->image) && $car->destroy($car->id)) {
-            return redirect()->route('car.index')->with('car-delete-success', 'Data Car Berhasil dihapus!');
+            return redirect()->route('car.index')->with('warning', 'Data Car Berhasil dihapus!');
         } else {
-            return redirect()->route('car.index')->with('car-delete-fail', 'Data Car Gagal dihapus!');
+            return redirect()->route('car.index')->with('danger', 'Data Car Gagal dihapus!');
         }
     }
 }

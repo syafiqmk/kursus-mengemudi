@@ -45,9 +45,9 @@ class StudentController extends Controller
 
 
         if ($enroll && $status) {
-            return redirect('/student/enrollment')->with('enroll-success', 'Berhasil Enroll Paket!');
+            return redirect('/student/enrollment')->with('success', 'Berhasil Enroll Paket!');
         } else {
-            return redirect('/student')->with('enroll-fail', 'Gagal Enroll Paket!');
+            return redirect('/student')->with('danger', 'Gagal Enroll Paket!');
         }
     }
 
@@ -81,9 +81,9 @@ class StudentController extends Controller
         }
 
         if($update) {
-            return redirect('/student/enrollment')->with('payment-success', 'Enrollment Payment Success');
+            return redirect('/student/enrollment')->with('success', 'Enrollment Payment Success');
         } else {
-            return redirect('/student/enrollment')->with('payment-fail', 'Enrollment Payment Failed');
+            return redirect('/student/enrollment')->with('danger', 'Enrollment Payment Failed');
         }
     }
 
@@ -139,12 +139,12 @@ class StudentController extends Controller
             }
 
             if($update) {
-                return redirect('/student/profile')->with('update-success', 'Update Profile Berhasil!');
+                return redirect('/student/profile')->with('success', 'Update Profile Berhasil!');
             } else {
-                return redirect('/student/profile')->with('update-fail', 'Update Profile Gagal!');
+                return redirect('/student/profile')->with('danger', 'Update Profile Gagal!');
             }
         } else {
-            return redirect('/student/profile')->with('wrong-pass', 'Password Salah!');
+            return redirect('/student/profile')->with('warning', 'Password Salah!');
         }
     }
 }

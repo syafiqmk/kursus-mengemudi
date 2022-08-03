@@ -55,9 +55,9 @@ class AdminPackageController extends Controller
         ]);
 
         if($create) {
-            return redirect()->route('package.index')->with('package-create-success', 'Data Package Berhasil ditambah!');
+            return redirect()->route('package.index')->with('success', 'Data Package Berhasil ditambah!');
         } else {
-            return redirect()->route('package.index')->with('package-create-fail', 'Data Package Gagal ditambah!');
+            return redirect()->route('package.index')->with('danger', 'Data Package Gagal ditambah!');
         }
     }
 
@@ -111,9 +111,9 @@ class AdminPackageController extends Controller
         ]);
 
         if ($update) {
-            return redirect()->route('package.index')->with('package-update-success', 'Data Package Berhasil diupdate!');
+            return redirect()->route('package.index')->with('success', 'Data Package Berhasil diupdate!');
         } else {
-            return redirect()->route('package.index')->with('package-update-fail', 'Data Package Gagal diupdate!');
+            return redirect()->route('package.index')->with('danger', 'Data Package Gagal diupdate!');
         }
     }
 
@@ -126,9 +126,9 @@ class AdminPackageController extends Controller
     public function destroy(Package $package)
     {
         if($package->destroy($package->id)) {
-            return redirect()->route('package.index')->with('package-delete-success', 'Data Package Berhasil dihapus!');
+            return redirect()->route('package.index')->with('warning', 'Data Package Berhasil dihapus!');
         } else {
-            return redirect()->route('package.index')->with('package-delete-fail', 'Data Package Gagal dihapus!');
+            return redirect()->route('package.index')->with('danger', 'Data Package Gagal dihapus!');
         }
     }
 }

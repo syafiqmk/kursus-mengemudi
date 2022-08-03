@@ -45,9 +45,9 @@ class InstructorController extends Controller
         ]);
 
         if ($finish && $status && $cars) {
-            return redirect('/instructor')->with('finish-success', 'Kursus Selesai');
+            return redirect('/instructor')->with('success', 'Kursus Selesai');
         } else {
-            return redirect('/instructor')->with('finish-fail', 'Kursus Selesai {error}');
+            return redirect('/instructor')->with('danger', 'Kursus Selesai {error}');
         }
     }
 
@@ -98,12 +98,12 @@ class InstructorController extends Controller
             }
 
             if($update) {
-                return redirect('/instructor/profile')->with('update-success', 'Update Profile Berhasil!');
+                return redirect('/instructor/profile')->with('success', 'Update Profile Berhasil!');
             } else {
-                return redirect('/instructor/profile')->with('update-fail', 'Update Profile Gagal!');
+                return redirect('/instructor/profile')->with('danger', 'Update Profile Gagal!');
             }
         } else {
-            return redirect('/instructor/profile')->with('wrong-pass', 'Password Salah!');
+            return redirect('/instructor/profile')->with('warning', 'Password Salah!');
         }
     }
 }

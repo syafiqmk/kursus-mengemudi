@@ -70,9 +70,9 @@ class AdminInstructorController extends Controller
         }
 
         if($create) {
-            return redirect()->route('instructor.index')->with('instructor-create-success', 'Data Instructor Berhasil ditambah!');
+            return redirect()->route('instructor.index')->with('success', 'Data Instructor Berhasil ditambah!');
         } else {
-            return redirect()->route('instructor.index')->with('instructor-create-fail', 'Data Instructor Gagal ditambah!');
+            return redirect()->route('instructor.index')->with('danger', 'Data Instructor Gagal ditambah!');
         }
     }
 
@@ -146,9 +146,9 @@ class AdminInstructorController extends Controller
         }
 
         if ($update) {
-            return redirect()->route('instructor.index')->with('instructor-update-success', 'Data Instructor Berhasil diupdate!');
+            return redirect()->route('instructor.index')->with('success', 'Data Instructor Berhasil diupdate!');
         } else {
-            return redirect()->route('instructor.index')->with('instructor-update-fail', 'Data Instructor Gagal diupdate!');
+            return redirect()->route('instructor.index')->with('danger', 'Data Instructor Gagal diupdate!');
         }
     }
 
@@ -163,9 +163,9 @@ class AdminInstructorController extends Controller
         $user = User::find($id);
 
         if(Storage::delete($user->photo) && $user->destroy($user->id)) {
-            return redirect()->route('instructor.index')->with('instructor-delete-success', 'Data Instructor Berhasil dihapus!');
+            return redirect()->route('instructor.index')->with('warning', 'Data Instructor Berhasil dihapus!');
         } else {
-            return redirect()->route('instructor.index')->with('instructor-delete-fail', 'Data Instructor Gagal dihapus!');
+            return redirect()->route('instructor.index')->with('danger', 'Data Instructor Gagal dihapus!');
         }
     }
 }

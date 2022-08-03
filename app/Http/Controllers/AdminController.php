@@ -37,9 +37,9 @@ class AdminController extends Controller
         ]);
 
         if($grant && $status) {
-            return redirect('/admin/enroll')->with('pay-confirm-success', 'Payment Confirmation Success!');
+            return redirect('/admin/enroll')->with('success', 'Payment Confirmation Success!');
         } else {
-            return redirect('/admin/enroll')->with('pay-confirm-fail', 'Payment Confirmation Failed!');
+            return redirect('/admin/enroll')->with('danger', 'Payment Confirmation Failed!');
         }
     }
 }
