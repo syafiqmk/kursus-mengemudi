@@ -5,14 +5,6 @@
 @endsection
 
 @section('content')
-    <div class="alerts">
-        @if (session()->has('enroll-fail'))
-            <div class="alert alert-danger">{{ session('enroll-fail') }}</div>
-        @elseif(session()->has('car-create-fail'))
-            <div class="alert alert-danger">{{ session('car-create-fail') }}</div>
-        
-        @endif
-    </div>
 
     <table class="table">
         <thead>

@@ -5,13 +5,6 @@
 @endsection
 
 @section('content')
-    @if (session()->has('wrong-pass'))
-        <div class="alert alert-danger">{{ session('wrong-pass') }}</div>
-    @elseif(session()->has('update-success'))
-        <div class="alert alert-success">{{ session('update-success') }}</div>
-    @elseif(session()->has('update-fail'))
-        <div class="alert alert-danger">{{ session('update-fail') }}</div>
-    @endif
 
     <div class="row d-flex justify-content-center">
         <div class="col-md-7">

@@ -89,6 +89,8 @@
         @yield('title')
       </div>
 
+      @include('components.alert')
+
       @yield('content')
 
     </main>

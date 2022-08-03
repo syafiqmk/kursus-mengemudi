@@ -5,21 +5,6 @@
 @endsection
 
 @section('content')
-    <div class="alerts">
-        @if (session()->has('brand-create-success'))
-            <div class="alert alert-success">{{ session('brand-create-success') }}</div>
-        @elseif(session()->has('brand-create-fail'))
-            <div class="alert alert-danger">{{ session('brand-create-fail') }}</div>
-        @elseif(session()->has('brand-update-success'))
-            <div class="alert alert-success">{{ session('brand-update-success') }}</div>
-        @elseif(session()->has('brand-update-fail'))
-            <div class="alert alert-danger">{{ session('brand-update-fail') }}</div>
-        @elseif(session()->has('brand-delete-success'))
-            <div class="alert alert-success">{{ session('brand-delete-success') }}</div>
-        @elseif(session()->has('brand-delete-success'))
-            <div class="alert alert-danger">{{ session('brand-delete-fail') }}</div>
-        @endif
-    </div>
 
     <a href="{{ Route('brand.create') }}" class="btn btn-primary">Tambah</a>
 

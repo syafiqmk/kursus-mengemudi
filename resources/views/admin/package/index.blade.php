@@ -5,21 +5,6 @@
 @endsection
 
 @section('content')
-    <div class="alerts">
-        @if (session()->has('package-create-success'))
-            <div class="alert alert-success">{{ session('package-create-success') }}</div>
-        @elseif(session()->has('package-create-fail'))
-            <div class="alert alert-danger">{{ session('package-create-fail') }}</div>
-        @elseif(session()->has('package-update-success'))
-            <div class="alert alert-success">{{ session('package-update-success') }}</div>
-        @elseif(session()->has('package-update-fail'))
-            <div class="alert alert-danger">{{ session('package-update-fail') }}</div>
-        @elseif(session()->has('package-delete-success'))
-            <div class="alert alert-success">{{ session('package-delete-success') }}</div>
-        @elseif(session()->has('package-delete-success'))
-            <div class="alert alert-danger">{{ session('package-delete-fail') }}</div>
-        @endif
-    </div>
 
     <a href="{{ route('package.create') }}" class="btn btn-primary">Tambah</a>
 

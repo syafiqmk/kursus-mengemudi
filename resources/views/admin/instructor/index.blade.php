@@ -5,21 +5,6 @@
 @endsection
 
 @section('content')
-    <div class="alerts">
-        @if (session()->has('instructor-create-success'))
-            <div class="alert alert-success">{{ session('instructor-create-success') }}</div>
-        @elseif(session()->has('instructor-create-fail'))
-            <div class="alert alert-danger">{{ session('instructor-create-fail') }}</div>
-        @elseif(session()->has('instructor-update-success'))
-            <div class="alert alert-success">{{ session('instructor-update-success') }}</div>
-        @elseif(session()->has('instructor-update-fail'))
-            <div class="alert alert-danger">{{ session('instructor-update-fail') }}</div>
-        @elseif(session()->has('instructor-delete-success'))
-            <div class="alert alert-success">{{ session('instructor-delete-success') }}</div>
-        @elseif(session()->has('instructor-delete-success'))
-            <div class="alert alert-danger">{{ session('instructor-delete-fail') }}</div>
-        @endif
-    </div>
 
     <div class="button">
         <a href="{{ route('instructor.create') }}" class="btn btn-primary">Tambah</a>
