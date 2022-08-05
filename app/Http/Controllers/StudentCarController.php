@@ -65,6 +65,7 @@ class StudentCarController extends Controller
                 'brand_id' => $credentials['brand'],
                 'transmission_id' => $credentials['transmission'],
                 'image' => $credentials['image'],
+                'student_id' => auth()->user()->id,
                 'status' => 'ready'
             ]);
         } else {
@@ -74,6 +75,7 @@ class StudentCarController extends Controller
                 'engine_capacity' => $credentials['engine-capacity'],
                 'brand_id' => $credentials['brand'],
                 'transmission_id' => $credentials['transmission'],
+                'student_id' => auth()->user()->id,
                 'status' => 'ready'
             ]);
         }
