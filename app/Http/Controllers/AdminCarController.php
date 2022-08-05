@@ -55,7 +55,7 @@ class AdminCarController extends Controller
             'image' => 'image|file'
         ]);
 
-        if($request->file('image')) {
+        if ($request->file('image')) {
             $credentials['image'] = $request->file('image')->store('images/car');
 
             $create = Car::create([
@@ -79,10 +79,10 @@ class AdminCarController extends Controller
         }
 
 
-        if($create) {
-            return redirect()->route('car.index')->with('success', 'Data Car Berhasil Ditambah!');
+        if ($create) {
+            return redirect()->route('car.index')->with('success', 'Car Added Successfully!');
         } else {
-            return redirect()->route('car.index')->with('danger', 'Data Car Gagal Ditambah!');
+            return redirect()->route('car.index')->with('danger', 'Car Add Process Failed!');
         }
     }
 
@@ -138,7 +138,7 @@ class AdminCarController extends Controller
             Storage::delete($car->image);
             $credentials['image'] = $request->file('image')->store('images/car');
 
-            $create = $car->update([
+            $update = $car->update([
                 'registration_number' => strtoupper($credentials['reg-number']),
                 'name' => ucwords($credentials['name']),
                 'engine_capacity' => $credentials['engine-capacity'],
@@ -148,7 +148,7 @@ class AdminCarController extends Controller
                 'status' => 'ready'
             ]);
         } else {
-            $create = $car->update([
+            $update = $car->update([
                 'registration_number' => strtoupper($credentials['reg-number']),
                 'name' => ucwords($credentials['name']),
                 'engine_capacity' => $credentials['engine-capacity'],
@@ -159,10 +159,10 @@ class AdminCarController extends Controller
         }
 
 
-        if ($create) {
-            return redirect()->route('car.index')->with('success', 'Data Car Berhasil Ditambah!');
+        if ($update) {
+            return redirect()->route('car.index')->with('success', 'Car data updated successfully!');
         } else {
-            return redirect()->route('car.index')->with('danger', 'Data Car Gagal Ditambah!');
+            return redirect()->route('car.index')->with('danger', 'Car data failed to be updated!');
         }
     }
 
@@ -175,9 +175,9 @@ class AdminCarController extends Controller
     public function destroy(Car $car)
     {
         if (Storage::delete($car->image) && $car->destroy($car->id)) {
-            return redirect()->route('car.index')->with('warning', 'Data Car Berhasil dihapus!');
+            return redirect()->route('car.index')->with('warning', 'Car Delete Success!');
         } else {
-            return redirect()->route('car.index')->with('danger', 'Data Car Gagal dihapus!');
+            return redirect()->route('car.index')->with('danger', 'Car Delete Failed!');
         }
     }
 }

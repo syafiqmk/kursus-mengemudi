@@ -52,7 +52,7 @@
                 </div>
             
                 <div class="mb-3">
-                    <label for="">Transmisi</label>
+                    <label for="">Transmission</label>
                     <select name="transmission" id="" class="form-select @error('transmission') is-invalid @enderror" required>
                         @foreach ($transmissions as $transmission)
                             <option value="{{ $transmission->id }}" {{ ($car->transmission_id == $transmission->id) ? 'selected' : '' }}>{{ $transmission->name }}</option>

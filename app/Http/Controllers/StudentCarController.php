@@ -6,6 +6,8 @@ use App\Models\Car;
 use App\Models\Brand;
 use App\Models\Transmission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class StudentCarController extends Controller
 {
@@ -17,7 +19,8 @@ class StudentCarController extends Controller
     public function index()
     {
         return view('student.car.index', [
-            'title' => "Your Cars"
+            'title' => "Your Cars",
+            'cars' => Car::where('student_id', auth()->user()->id)->latest()->paginate(10),
         ]);
     }
 
@@ -44,10 +47,43 @@ class StudentCarController extends Controller
     public function store(Request $request)
     {
         $credentials = $request->validate([
+            'reg-number' => 'required',
             'name' => 'required|min:3|max:100',
-            'regNumber' => 'required',
-            ''
+            'engine-capacity' => 'required|numeric|min:1',
+            'brand' => 'required',
+            'transmission' => 'required',
+            'image' => 'image|file'
         ]);
+
+        if ($request->file('image')) {
+            $credentials['image'] = $request->file('image')->store('images/car');
+
+            $create = Car::create([
+                'registration_number' => strtoupper($credentials['reg-number']),
+                'name' => ucwords($credentials['name']),
+                'engine_capacity' => $credentials['engine-capacity'],
+                'brand_id' => $credentials['brand'],
+                'transmission_id' => $credentials['transmission'],
+                'image' => $credentials['image'],
+                'status' => 'ready'
+            ]);
+        } else {
+            $create = Car::create([
+                'registration_number' => strtoupper($credentials['reg-number']),
+                'name' => ucwords($credentials['name']),
+                'engine_capacity' => $credentials['engine-capacity'],
+                'brand_id' => $credentials['brand'],
+                'transmission_id' => $credentials['transmission'],
+                'status' => 'ready'
+            ]);
+        }
+
+
+        if ($create) {
+            return redirect()->route('student.car.index')->with('success', 'Car Added Successfully!');
+        } else {
+            return redirect()->route('student.car.index')->with('danger', 'Car Add Process Failed!');
+        }
     }
 
     /**
@@ -58,7 +94,10 @@ class StudentCarController extends Controller
      */
     public function show(Car $car)
     {
-        //
+        return view('student.car.show', [
+            'title' => $car->name,
+            'car' => $car,
+        ]);
     }
 
     /**
@@ -69,7 +108,12 @@ class StudentCarController extends Controller
      */
     public function edit(Car $car)
     {
-        //
+        return view('student.car.edit', [
+            'title' => "Edit: ".$car->name,
+            'car' => $car,
+            'transmissions' => Transmission::latest()->get(),
+            'brands' => Brand::latest()->get(),
+        ]);
     }
 
     /**
@@ -81,7 +125,45 @@ class StudentCarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
-        //
+        $credentials = $request->validate([
+            'reg-number' => 'required',
+            'name' => 'required|min:3|max:100',
+            'engine-capacity' => 'required|numeric|min:1',
+            'brand' => 'required',
+            'transmission' => 'required',
+            'image' => 'image|file'
+        ]);
+
+        if ($request->file('image')) {
+            Storage::delete($car->image);
+            $credentials['image'] = $request->file('image')->store('images/car');
+
+            $update = $car->update([
+                'registration_number' => strtoupper($credentials['reg-number']),
+                'name' => ucwords($credentials['name']),
+                'engine_capacity' => $credentials['engine-capacity'],
+                'brand_id' => $credentials['brand'],
+                'transmission_id' => $credentials['transmission'],
+                'image' => $credentials['image'],
+                'status' => 'ready'
+            ]);
+        } else {
+            $update = $car->update([
+                'registration_number' => strtoupper($credentials['reg-number']),
+                'name' => ucwords($credentials['name']),
+                'engine_capacity' => $credentials['engine-capacity'],
+                'brand_id' => $credentials['brand'],
+                'transmission_id' => $credentials['transmission'],
+                'status' => 'ready'
+            ]);
+        }
+
+
+        if ($update) {
+            return redirect()->route('student.car.index')->with('success', 'Car data updated successfully!');
+        } else {
+            return redirect()->route('student.car.index')->with('danger', 'Car data failed to be updated!');
+        }
     }
 
     /**
@@ -92,6 +174,10 @@ class StudentCarController extends Controller
      */
     public function destroy(Car $car)
     {
-        //
+        if (Storage::delete($car->image) && $car->destroy($car->id)) {
+            return redirect()->route('student.car.index')->with('warning', 'Car Delete Success!');
+        } else {
+            return redirect()->route('student.car.index')->with('danger', 'Car Delete Failed!');
+        }
     }
 }
