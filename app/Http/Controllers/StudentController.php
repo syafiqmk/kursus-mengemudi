@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\User;
-use App\Models\Enroll;
+use App\Models\Course;
 use App\Models\Package;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -36,8 +36,8 @@ class StudentController extends Controller
         $status = $carg->update([
             'status' => 'not ready',
         ]);
-        $enroll = Enroll::create([
-            'user_id' => auth()->user()->id,
+        $enroll = Course::create([
+            'student_id' => auth()->user()->id,
             'package_id' => $package,
             'car_id' => $car,
             'status' => 'enroll',
@@ -54,19 +54,19 @@ class StudentController extends Controller
     public function enrollment() {
         return view('student.enrollment', [
             'title' => 'Enrollment',
-            'enrolls' => Enroll::latest()->where('user_id', auth()->user()->id)->get(),
+            'enrolls' => Course::latest()->where('student_id', auth()->user()->id)->get(),
         ]);
     }
 
     public function pay($enroll) {
         return view('student.pay', [
             'title' => 'Pay for Package Enrollment',
-            'enroll' => Enroll::find($enroll)
+            'enroll' => Course::find($enroll)
         ]);
     }
 
     public function payProcess($enroll, Request $request) {
-        $enroll = Enroll::find($enroll);
+        $enroll = Course::find($enroll);
 
         $credentials = $request->validate([
             'image' => 'required|image|file'
@@ -113,10 +113,6 @@ class StudentController extends Controller
 
 
         if (Hash::check($request['old-pass'], $oldPass)) {
-            // var_dump($request['old-pass']);
-            // var_dump($request['new-pass']);
-            // var_dump($oldPass);
-            // var_dump('matched');
             if($request->file('photo')) {
                 if($user->photo) {
                     Storage::delete($user->photo);

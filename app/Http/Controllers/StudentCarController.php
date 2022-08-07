@@ -82,9 +82,9 @@ class StudentCarController extends Controller
 
 
         if ($create) {
-            return redirect()->route('student.car.index')->with('success', 'Car Added Successfully!');
+            return redirect()->route('student.car.index')->with('success', 'Car added successfully!');
         } else {
-            return redirect()->route('student.car.index')->with('danger', 'Car Add Process Failed!');
+            return redirect()->route('student.car.index')->with('danger', 'Car fail to add!');
         }
     }
 
@@ -162,9 +162,9 @@ class StudentCarController extends Controller
 
 
         if ($update) {
-            return redirect()->route('student.car.index')->with('success', 'Car data updated successfully!');
+            return redirect()->route('student.car.index')->with('success', 'Car edited successfully!');
         } else {
-            return redirect()->route('student.car.index')->with('danger', 'Car data failed to be updated!');
+            return redirect()->route('student.car.index')->with('danger', 'Car fail to edit!');
         }
     }
 
@@ -177,9 +177,9 @@ class StudentCarController extends Controller
     public function destroy(Car $car)
     {
         if (Storage::delete($car->image) && $car->destroy($car->id)) {
-            return redirect()->route('student.car.index')->with('warning', 'Car Delete Success!');
+            return redirect()->route('student.car.index')->with('warning', 'Car deleted successfully!');
         } else {
-            return redirect()->route('student.car.index')->with('danger', 'Car Delete Failed!');
+            return redirect()->route('student.car.index')->with('danger', 'Car fail to delete!');
         }
     }
 }

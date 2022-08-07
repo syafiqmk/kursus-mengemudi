@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\User;
-use App\Models\Enroll;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,12 +16,12 @@ class InstructorController extends Controller
     public function index() {
         return view('instructor.index', [
             'title' => 'Welcome, '. auth()->user()->name,
-            'enrolls' => Enroll::latest()->where([['instructor_id', auth()->user()->id], ['status', 'grant']])->get()
+            'enrolls' => Course::latest()->where([['instructor_id', auth()->user()->id], ['status', 'grant']])->get()
         ]);
     }
 
     public function enroll($enroll) {
-        $enroll = Enroll::find($enroll);
+        $enroll = Course::find($enroll);
         return view('instructor.enroll', [
             'title' => $enroll->package->name . ' ' . $enroll->user->name,
             'enroll' => $enroll
@@ -29,7 +29,7 @@ class InstructorController extends Controller
     }
 
     public function finish($enroll) {
-        $enroll = Enroll::find($enroll);
+        $enroll = Course::find($enroll);
         $instructor = User::find(auth()->user()->id);
         $car = Car::find($enroll->car_id);
 
@@ -45,9 +45,9 @@ class InstructorController extends Controller
         ]);
 
         if ($finish && $status && $cars) {
-            return redirect('/instructor')->with('success', 'Kursus Selesai');
+            return redirect('/instructor')->with('success', 'Course Finished!');
         } else {
-            return redirect('/instructor')->with('danger', 'Kursus Selesai {error}');
+            return redirect('/instructor')->with('danger', 'Course fail to finish!');
         }
     }
 
@@ -98,12 +98,12 @@ class InstructorController extends Controller
             }
 
             if($update) {
-                return redirect('/instructor/profile')->with('success', 'Update Profile Berhasil!');
+                return redirect('/instructor/profile')->with('success', 'Profile updated!');
             } else {
-                return redirect('/instructor/profile')->with('danger', 'Update Profile Gagal!');
+                return redirect('/instructor/profile')->with('danger', 'Profile fail to update!');
             }
         } else {
-            return redirect('/instructor/profile')->with('warning', 'Password Salah!');
+            return redirect('/instructor/profile')->with('warning', 'Wrong Password!');
         }
     }
 }

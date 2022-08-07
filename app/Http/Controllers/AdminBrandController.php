@@ -49,9 +49,9 @@ class AdminBrandController extends Controller
         ]);
 
         if ($create) {
-            return redirect()->route('brand.index')->with('success', 'Tambah Data Brand Berhasil!');
+            return redirect()->route('brand.index')->with('success', 'Brand added successfully!');
         } else {
-            return redirect()->route('brand.index')->with('danger', 'Tambah Data Brand Gagal!');
+            return redirect()->route('brand.index')->with('danger', 'Brand fail to add!');
         }
     }
 
@@ -98,9 +98,9 @@ class AdminBrandController extends Controller
         ]);
 
         if ($create) {
-            return redirect()->route('brand.index')->with('success', 'Edit Data Brand Berhasil!');
+            return redirect()->route('brand.index')->with('success', 'Brand edited successfully!');
         } else {
-            return redirect()->route('brand.index')->with('danger', 'Edit Data Brand Gagal!');
+            return redirect()->route('brand.index')->with('danger', 'Brand fail to edit!');
         }
     }
 
@@ -113,9 +113,9 @@ class AdminBrandController extends Controller
     public function destroy(Brand $brand)
     {
         if ($brand->destroy($brand->id)) {
-            return redirect()->route('brand.index')->with('warning', 'Data Brand Berhasil dihapus!');
+            return redirect()->route('brand.index')->with('warning', 'Brand deleted successfully!');
         } else {
-            return redirect()->route('brand.index')->with('danger', 'Data Brand Gagal dihapus!');
+            return redirect()->route('brand.index')->with('danger', 'Brand fail to delete!');
         }
     }
 }
