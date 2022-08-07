@@ -16,7 +16,7 @@ class Package extends Model
         return $this->belongsTo(Transmission::class);
     }
 
-    public function enroll() {
-        return $this->hasMany(Enroll::class);
+    public function course() {
+        return $this->hasMany(Course::class);
     }
 }
