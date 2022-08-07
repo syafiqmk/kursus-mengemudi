@@ -17,7 +17,7 @@
                 <tr>
                     <td>Price</td>
                     <td>:</td>
-                    <td>Rp. {{ $package->price }}</td>
+                    <td>Rp. {{ number_format($package->price, 2, ',', '.') }}</td>
                 </tr>
                 {{-- <tr>
                     <td>Transmission</td>

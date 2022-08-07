@@ -2,7 +2,7 @@
 
 @section('content')
     <h5>{{ $package->detail }}</h5>
-    <h6>Price : Rp.{{ $package->price }}</h6>
+    <h6>Price : Rp. {{ number_format($package->price, 2, ',', '.') }}</h6>
 
     <h3 class="mt-4">Cars :</h3>
     @foreach ($cars as $car)

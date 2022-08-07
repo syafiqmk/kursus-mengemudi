@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Tambah</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
                     <a href="{{ route('student.car.index') }}" class="btn btn-danger">Cancel</a>
                 </div>
             </form>

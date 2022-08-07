@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                     <a href="{{ route('instructor.index') }}" class="btn btn-danger">Cancel</a>
                 </div>
 

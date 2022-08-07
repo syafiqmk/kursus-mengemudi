@@ -33,22 +33,9 @@
                         </div>
                     @enderror
                 </div>
-                {{-- <div class="mb-3">
-                    <label for="">Transmission</label>
-                    <select name="transmission" id="" class="form-select @error('transmission') is-invalid @enderror">
-                        @foreach ($transmissions as $transmission)
-                            <option value="{{ $transmission->id }}" {{ ($transmission->id == old('transmission')) ? 'selected' : '' }}>{{ $transmission->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('transmission')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div> --}}
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Tambah</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
                     <a href="{{ route('package.index') }}" class="btn btn-danger">Cancel</a>
                 </div>
             </form>
