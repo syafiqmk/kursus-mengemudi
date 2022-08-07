@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <a href="{{ Route('car.create') }}" class="btn btn-primary">Tambah</a>
+    <a href="{{ Route('car.create') }}" class="btn btn-primary">Add data</a>
 
     <div class="row mt-3">
         @foreach ($cars as $car)

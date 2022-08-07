@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <a href="{{ Route('brand.create') }}" class="btn btn-primary">Tambah</a>
+    <a href="{{ Route('brand.create') }}" class="btn btn-primary">Add data</a>
 
     <table class="table">
         <thead>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <a href="{{ route('package.create') }}" class="btn btn-primary">Tambah</a>
+    <a href="{{ route('package.create') }}" class="btn btn-primary">Add data</a>
 
     <table class="table">
         <thead>

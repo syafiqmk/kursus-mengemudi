@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <a href="{{ route('student.car.create') }}" class="btn btn-primary">Tambah</a>
+    <a href="{{ route('student.car.create') }}" class="btn btn-primary">Add data</a>
 
     <div class="row mt-3">
         @foreach ($cars as $car)

@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="button">
-        <a href="{{ route('instructor.create') }}" class="btn btn-primary">Tambah</a>
+        <a href="{{ route('instructor.create') }}" class="btn btn-primary">Add data</a>
     </div>
 
     <table class="table">
