@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ApiTransmissionController extends Controller
 {
     // Show all transmission
-    public function show() {
+    public function showAll() {
         return response([
             'Transmissions' => Transmission::all(),
         ]);
