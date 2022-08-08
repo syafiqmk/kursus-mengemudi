@@ -13,7 +13,7 @@ class Course extends Model
     protected $with = ['student', 'package', 'car', 'instructor'];
 
     public function student() {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(User::class);
     }
 
     public function package() {
@@ -25,7 +25,7 @@ class Course extends Model
     }
 
     public function instructor() {
-        return $this->belongsTo(Instructor::class);
+        return $this->belongsTo(User::class);
     }
 
     public function courseDetail() {

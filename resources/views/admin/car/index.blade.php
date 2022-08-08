@@ -11,6 +11,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $car->brand->name }} {{ $car->name }}</h5>
                     <p>{{ $car->engine_capacity }} CC, {{ $car->transmission->name }}, {{ $car->status }}</p>
+                    <p>Rp. {{ number_format($car->price, 2, ',', '.') }}</p>
                     <div class="d-flex justify-content-center">
                         <form action="{{ route('car.destroy', $car->id) }}" method="post">
                             @csrf
