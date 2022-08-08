@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ApiCarController;
 use App\Http\Controllers\Api\ApiAuthController;
 use App\Http\Controllers\Api\ApiBrandController;
 use App\Http\Controllers\Api\ApiPackageController;
@@ -32,6 +33,10 @@ Route::get('/brand/{brand}', [ApiBrandController::class, 'show']);
 // Package
 Route::get('/package', [ApiPackageController::class, 'showAll']);
 Route::get('/package/{package}', [ApiPackageController::class, 'show']);
+
+// Car
+Route::get('/car', [ApiCarController::class, 'showAll']);
+Route::get('/car/{car}', [ApiCarController::class, 'show']);
 
 // Route that must be authorized
 Route::middleware('auth:sanctum')->group(function() {
