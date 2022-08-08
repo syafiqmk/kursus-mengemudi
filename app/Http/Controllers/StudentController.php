@@ -26,7 +26,7 @@ class StudentController extends Controller
         return view('student.enroll', [
             'title' => $package->name,
             'package' => $package,
-            'cars' => Car::latest()->where([['transmission_id', $package->transmission_id], ['status', 'ready']])->get(),
+            'cars' => Car::latest()->where([['status', 'ready']])->get(),
         ]);
     }
 

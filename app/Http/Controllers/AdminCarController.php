@@ -49,6 +49,7 @@ class AdminCarController extends Controller
         $credentials = $request->validate([
             'reg-number' => 'required',
             'name' => 'required|min:3|max:100',
+            'price' => 'required|numeric',
             'engine-capacity' => 'required|numeric|min:1',
             'brand' => 'required',
             'transmission' => 'required',
@@ -61,6 +62,7 @@ class AdminCarController extends Controller
             $create = Car::create([
                 'registration_number' => strtoupper($credentials['reg-number']),
                 'name' => ucwords($credentials['name']),
+                'price' => $credentials['price'],
                 'engine_capacity' => $credentials['engine-capacity'],
                 'brand_id' => $credentials['brand'],
                 'transmission_id' => $credentials['transmission'],
@@ -71,6 +73,7 @@ class AdminCarController extends Controller
             $create = Car::create([
                 'registration_number' => strtoupper($credentials['reg-number']),
                 'name' => ucwords($credentials['name']),
+                'price' => $credentials['price'],
                 'engine_capacity' => $credentials['engine-capacity'],
                 'brand_id' => $credentials['brand'],
                 'transmission_id' => $credentials['transmission'],
@@ -128,6 +131,7 @@ class AdminCarController extends Controller
         $credentials = $request->validate([
             'reg-number' => 'required',
             'name' => 'required|min:3|max:100',
+            'price' => 'required|numeric',
             'engine-capacity' => 'required|numeric|min:1',
             'brand' => 'required',
             'transmission' => 'required',
@@ -141,6 +145,7 @@ class AdminCarController extends Controller
             $update = $car->update([
                 'registration_number' => strtoupper($credentials['reg-number']),
                 'name' => ucwords($credentials['name']),
+                'price' => $credentials['price'],
                 'engine_capacity' => $credentials['engine-capacity'],
                 'brand_id' => $credentials['brand'],
                 'transmission_id' => $credentials['transmission'],
@@ -151,6 +156,7 @@ class AdminCarController extends Controller
             $update = $car->update([
                 'registration_number' => strtoupper($credentials['reg-number']),
                 'name' => ucwords($credentials['name']),
+                'price' => $credentials['price'],
                 'engine_capacity' => $credentials['engine-capacity'],
                 'brand_id' => $credentials['brand'],
                 'transmission_id' => $credentials['transmission'],

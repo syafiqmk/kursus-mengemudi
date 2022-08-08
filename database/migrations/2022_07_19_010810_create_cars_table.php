@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('status', ['ready', 'not ready']);
             $table->bigInteger('price')->nullable();
             $table->foreignId('brand_id')->constrained('brands')->onDelete('cascade');
-            $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('student_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('transmission_id')->constrained('transmissions');
             $table->timestamps();
         });
