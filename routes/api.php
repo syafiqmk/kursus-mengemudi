@@ -26,10 +26,16 @@ Route::get('/transmission', [ApiTransmissionController::class, 'showAll']);
 
 // Brand
 Route::get('/brand', [ApiBrandController::class, 'showAll']);
+Route::get('/brand/{brand}', [ApiBrandController::class, 'show']);
 
 // Route that must be authorized
 Route::middleware('auth:sanctum')->group(function() {
     // Authorization
     Route::get('/profile', [ApiAuthController::class, 'profile']);
     Route::post('/logout', [ApiAuthController::class, 'logout']);
+
+    // Brand
+    Route::post('/brand/create', [ApiBrandController::class, 'create']);
+    Route::put('/brand/{brand}/edit', [ApiBrandController::class, 'edit']);
+    Route::delete('/brand/{brand}/delete', [ApiBrandController::class, 'delete']);
 });
