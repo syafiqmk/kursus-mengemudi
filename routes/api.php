@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ApiAuthController;
 use App\Http\Controllers\Api\ApiBrandController;
 use App\Http\Controllers\Api\ApiPackageController;
 use App\Http\Controllers\Api\ApiTransmissionController;
+use App\Http\Controllers\Api\Student\ApiStudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,10 +66,7 @@ Route::middleware('auth:sanctum')->group(function() {
     // Middleware student
     Route::middleware('isStudent')->group(function() {
         
-        Route::get('/testStudent', function() {
-            return response([
-                'message' => 'Test Student!'
-            ]);
-        });
+        // Profile
+        Route::put('/student/profile', [ApiStudentController::class, 'profile']);
     });
 });
