@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ApiBrandController;
 use App\Http\Controllers\Api\ApiPackageController;
 use App\Http\Controllers\Api\ApiTransmissionController;
 use App\Http\Controllers\Api\Student\ApiStudentController;
+use App\Http\Controllers\Api\Student\ApiStudentCarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,5 +69,12 @@ Route::middleware('auth:sanctum')->group(function() {
         
         // Profile
         Route::put('/student/profile', [ApiStudentController::class, 'profile']);
+
+        // Car
+        Route::get('/student/car', [ApiStudentCarController::class, 'showAll']);
+        Route::post('/student/car/create', [ApiStudentCarController::class, 'create']);
+        Route::get('/student/car/{car}', [ApiStudentCarController::class, 'show']);
+        Route::put('/student/car/{car}/edit', [ApiStudentCarController::class, 'edit']);
+        Route::delete('/student/car/{car}/delete', [ApiStudentCarController::class, 'delete']);
     });
 });
