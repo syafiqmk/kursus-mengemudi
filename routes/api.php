@@ -44,13 +44,31 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/profile', [ApiAuthController::class, 'profile']);
     Route::post('/logout', [ApiAuthController::class, 'logout']);
 
-    // Brand
-    Route::post('/brand/create', [ApiBrandController::class, 'create']);
-    Route::put('/brand/{brand}/edit', [ApiBrandController::class, 'edit']);
-    Route::delete('/brand/{brand}/delete', [ApiBrandController::class, 'delete']);
+    // MIddleware isAdmin
+    Route::middleware('isAdmin')->group(function() {
+        // Brand
+        Route::post('/brand/create', [ApiBrandController::class, 'create']);
+        Route::put('/brand/{brand}/edit', [ApiBrandController::class, 'edit']);
+        Route::delete('/brand/{brand}/delete', [ApiBrandController::class, 'delete']);
+    
+        // Package
+        Route::post('/package/create', [ApiPackageController::class, 'create']);
+        Route::put('/package/{package}/edit', [ApiPackageController::class, 'edit']);
+        Route::delete('/package/{package}/delete', [ApiPackageController::class, 'delete']);
+        
+        // Car
+        Route::post('/car/create', [ApiCarController::class, 'create']);
+        Route::put('/car/{car}/edit', [ApiCarController::class, 'edit']);
+        Route::delete('/car/{car}/delete', [ApiCarController::class, 'delete']);
+    });
 
-    // Package
-    Route::post('/package/create', [ApiPackageController::class, 'create']);
-    Route::put('/package/{package}/edit', [ApiPackageController::class, 'edit']);
-    Route::delete('/package/{package}/delete', [ApiPackageController::class, 'delete']);
+    // Middleware student
+    Route::middleware('isStudent')->group(function() {
+        
+        Route::get('/testStudent', function() {
+            return response([
+                'message' => 'Test Student!'
+            ]);
+        });
+    });
 });
