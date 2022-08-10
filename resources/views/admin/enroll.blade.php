@@ -14,7 +14,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $enroll->package->name }}</td>
-                    <td>{{ $enroll->user->name }}</td>
+                    <td>{{ $enroll->student->name }}</td>
                     <td>
                         <a href="/admin/enroll/{{ $enroll->id }}" class="btn btn-primary">Confirm</a>
                     </td>

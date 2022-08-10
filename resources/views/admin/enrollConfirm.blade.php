@@ -11,7 +11,7 @@
                 <tr>
                     <td>Student</td>
                     <td>:</td>
-                    <td>{{ $enroll->user->name }}</td>
+                    <td>{{ $enroll->student->name }}</td>
                 </tr>
                 <tr>
                     <td>Package</td>
@@ -19,9 +19,24 @@
                     <td>{{ $enroll->package->name }}</td>
                 </tr>
                 <tr>
-                    <td>Price</td>
+                    <td>Package Price</td>
                     <td>:</td>
-                    <td>Rp. {{ $enroll->package->price }}</td>
+                    <td>Rp. {{ number_format($enroll->package->price, 2, ',', '.') }}</td>
+                </tr>
+                <tr>
+                    <td>Car</td>
+                    <td>:</td>
+                    <td>{{ $enroll->car->name }} ({{ $enroll->car->registration_number }})</td>
+                </tr>
+                <tr>
+                    <td>Car Rent Price</td>
+                    <td>:</td>
+                    <td>Rp. {{ number_format($enroll->car->price, 2, ',', '.')}}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>:</td>
+                    <td>Rp. {{ number_format(($enroll->package->price + $enroll->car->price), 2, ',', '.') }}</td>
                 </tr>
             </table>
         </div>
