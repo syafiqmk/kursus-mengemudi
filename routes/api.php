@@ -86,5 +86,6 @@ Route::middleware('auth:sanctum')->group(function() {
         // Course
         Route::get('/student/course', [ApiStudentCourseController::class, 'showAll']);
         Route::post('/student/course/enroll', [ApiStudentCourseController::class, 'enroll']);
+        Route::put('/student/course/{course}/pay', [ApiStudentCourseController::class, 'pay']);
     });
 });

@@ -54,4 +54,37 @@ class ApiStudentCourseController extends Controller
             ]);
         }
     }
+
+    // Course pay
+    public function pay(Request $request, Course $course) {
+        $credentials = $request->validate([
+            'image' => 'required|file|image'
+        ]);
+
+        if($course->status == 'enroll') {
+            if($request->file('image')) {
+                $credentials['image'] = $request->file('image')->store('images/payment');
+            }
+    
+            $pay = $course->update([
+                'payment_image' => $credentials['image'],
+                'status' => 'wait'
+            ]);
+    
+            if($pay) {
+                return response([
+                    'message' => 'Course payment success!'
+                ], 200);
+            } else {
+                return response([
+                    'message' => 'Course payment fail!'
+                ]);
+            }
+        } else {
+            return response([
+                'message' => 'Course has been pay!'
+            ]);
+        }
+
+    }
 }
