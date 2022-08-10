@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ApiBrandController;
 use App\Http\Controllers\Api\ApiPackageController;
 use App\Http\Controllers\Api\ApiTransmissionController;
 use App\Http\Controllers\Api\Student\ApiStudentController;
+use App\Http\Controllers\Api\Admin\ApiAdminCourseController;
 use App\Http\Controllers\Api\Student\ApiStudentCarController;
 use App\Http\Controllers\Api\Student\ApiStudentCourseController;
 use App\Http\Controllers\Api\Student\ApiStudentPackageController;
@@ -66,7 +67,9 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::delete('/car/{car}/delete', [ApiCarController::class, 'delete']);
 
         // Course
-        Route::get('/admin/payment', [ApiAdminCourseController::class, 'showPayment']);
+        Route::get('/admin/payment', [ApiAdminCourseController::class, 'showAllPayment']);
+        Route::get('/admin/payment/{course}', [ApiAdminCourseController::class, 'showPayment']);
+        Route::put('/admin/payment/{course}/confirm', [ApiAdminCourseController::class, 'confirm']);
     });
 
     // Middleware student
