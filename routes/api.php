@@ -64,6 +64,9 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::post('/car/create', [ApiCarController::class, 'create']);
         Route::put('/car/{car}/edit', [ApiCarController::class, 'edit']);
         Route::delete('/car/{car}/delete', [ApiCarController::class, 'delete']);
+
+        // Course
+        Route::get('/admin/payment', [ApiAdminCourseController::class, 'showPayment']);
     });
 
     // Middleware student
@@ -87,5 +90,6 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::get('/student/course', [ApiStudentCourseController::class, 'showAll']);
         Route::post('/student/course/enroll', [ApiStudentCourseController::class, 'enroll']);
         Route::put('/student/course/{course}/pay', [ApiStudentCourseController::class, 'pay']);
+        Route::get('/student/course/{course}', [ApiStudentCourseController::class, 'detail']);
     });
 });

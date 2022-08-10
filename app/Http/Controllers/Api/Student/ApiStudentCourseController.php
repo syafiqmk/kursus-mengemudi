@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Student;
 
 use App\Models\Car;
 use App\Models\Course;
+use App\Models\CourseDetail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -85,6 +86,13 @@ class ApiStudentCourseController extends Controller
                 'message' => 'Course has been pay!'
             ]);
         }
+    }
 
+    // Course detail
+    public function detail(Course $course) {
+        return response([
+            'course' => $course,
+            'detail' => CourseDetail::where('course_id', $course->id)->latest()->get()
+        ]);
     }
 }
