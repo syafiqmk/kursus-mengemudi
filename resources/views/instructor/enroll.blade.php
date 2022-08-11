@@ -10,7 +10,7 @@
         <tr>
             <td>Student</td>
             <td>:</td>
-            <td>{{ $enroll->user->name }}</td>
+            <td>{{ $enroll->student->name }}</td>
         </tr>
         <tr>
             <td>Instructor</td>

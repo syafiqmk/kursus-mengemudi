@@ -23,7 +23,7 @@ class InstructorController extends Controller
     public function enroll($enroll) {
         $enroll = Course::find($enroll);
         return view('instructor.enroll', [
-            'title' => $enroll->package->name . ' ' . $enroll->user->name,
+            'title' => $enroll->package->name . ' | ' . $enroll->student->name,
             'enroll' => $enroll
         ]);
     }
