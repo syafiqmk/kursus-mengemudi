@@ -71,6 +71,7 @@ Route::middleware('isStudent')->name('student.')->group(function() {
 Route::middleware('isInstructor')->group(function() {
     Route::get('/instructor', [InstructorController::class ,'index']);
     Route::get('/instructor/enroll/{enroll}', [InstructorController::class, 'enroll']);
+    Route::post('/instructor/enroll/{enroll}/detail', [InstructorController::class, 'detail']);
     Route::put('/instructor/enroll/{enroll}/finish', [InstructorController::class, 'finish']);
     Route::get('/instructor/profile', [InstructorController::class, 'profile']);
     Route::put('/instructor/profile/edit', [InstructorController::class, 'profileEdit']);

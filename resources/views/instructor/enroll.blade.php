@@ -30,7 +30,7 @@
                     @csrf
                     @method('PUT')
 
-                    <button type="submit" class="btn btn-primary">Finish</button>
+                    <button type="submit" class="btn btn-primary" onclick="return confirm('Finish Course?')">Finish</button>
                 </form>
             </td>
         </tr>

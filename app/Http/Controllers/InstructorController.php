@@ -28,6 +28,14 @@ class InstructorController extends Controller
         ]);
     }
 
+    // Add course detail
+    public function detail(Request $request, Course $course) {
+        $credentials = $request->validate([
+            'detail' => 'required|min:3',
+        ]);
+    }
+
+    // Finish
     public function finish($enroll) {
         $enroll = Course::find($enroll);
         $instructor = User::find(auth()->user()->id);
@@ -50,6 +58,7 @@ class InstructorController extends Controller
             return redirect('/instructor')->with('danger', 'Course fail to finish!');
         }
     }
+
 
     // profiles
     public function profile() {
