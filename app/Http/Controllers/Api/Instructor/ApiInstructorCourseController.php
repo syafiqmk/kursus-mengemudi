@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api\Instructor;
 
+use App\Models\Car;
+use App\Models\User;
 use App\Models\Course;
 use App\Models\CourseDetail;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ApiInstructorCourseController extends Controller
 {
@@ -72,8 +74,18 @@ class ApiInstructorCourseController extends Controller
                     'detail' => 'Course Finished!',
                     'course_id' => $course->id
                 ]);
+
+                $car = Car::find($course->car_id);
+                $car = $car->update([
+                    'status' => 'ready'
+                ]);
+
+                $instructor = User::find($course->instructor_id);
+                $instructor = $instructor->update([
+                    'status' => 'ready'
+                ]);
         
-                if($finish && $detailFinish) {
+                if($finish && $detailFinish && $car && $instructor) {
                     return response([
                         'message' => 'Course finished successfully!'
                     ], 200);
