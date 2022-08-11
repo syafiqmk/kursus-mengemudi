@@ -10,8 +10,10 @@ use App\Http\Controllers\Api\ApiTransmissionController;
 use App\Http\Controllers\Api\Student\ApiStudentController;
 use App\Http\Controllers\Api\Admin\ApiAdminCourseController;
 use App\Http\Controllers\Api\Student\ApiStudentCarController;
+use App\Http\Controllers\Api\Instructor\ApiInstructorController;
 use App\Http\Controllers\Api\Student\ApiStudentCourseController;
 use App\Http\Controllers\Api\Student\ApiStudentPackageController;
+use App\Http\Controllers\Api\Instructor\ApiInstructorCourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,5 +96,17 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::post('/student/course/enroll', [ApiStudentCourseController::class, 'enroll']);
         Route::put('/student/course/{course}/pay', [ApiStudentCourseController::class, 'pay']);
         Route::get('/student/course/{course}', [ApiStudentCourseController::class, 'detail']);
+    });
+
+    // Middleware isInstructor
+    Route::middleware('isInstructor')->group(function() {
+        // Profile
+        Route::put('/instructor/profile', [ApiInstructorController::class, 'profile']);
+
+        // Course
+        Route::get('/instructor/course', [ApiInstructorCourseController::class, 'showAll']);
+        Route::get('/instructor/course/{course}', [ApiInstructorCourseController::class, 'show']);
+        Route::post('/instructor/course/{course}/detail', [ApiInstructorCourseController::class, 'detail']);
+        Route::post('/instructor/course/{course}/finish', [ApiInstructorCourseController::class, 'finish']);
     });
 });

@@ -20,7 +20,8 @@ class ApiAuthController extends Controller
         $auth = User::create([
             'name' => ucwords($credentials['name']),
             'email' => $credentials['email'],
-            'password' => bcrypt($credentials['password'])
+            'password' => bcrypt($credentials['password']),
+            'role' => 'student'
         ]);
 
         if($auth) {
