@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\User;
 use App\Models\Course;
+use App\Models\CourseDetail;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -20,11 +21,13 @@ class InstructorController extends Controller
         ]);
     }
 
+    // Course detail
     public function enroll($enroll) {
         $enroll = Course::find($enroll);
         return view('instructor.enroll', [
             'title' => $enroll->package->name . ' | ' . $enroll->student->name,
-            'enroll' => $enroll
+            'enroll' => $enroll, 
+            'details' => CourseDetail::where('course_id', $enroll->id)->latest()->get()
         ]);
     }
 
@@ -33,6 +36,17 @@ class InstructorController extends Controller
         $credentials = $request->validate([
             'detail' => 'required|min:3',
         ]);
+
+        $detail = CourseDetail::create([
+            'detail' => $credentials['detail'],
+            'course_id' => $course->id
+        ]);
+
+        if($detail) {
+            return redirect()->back()->with('success', 'Detail added successfully!');
+        } else {
+            return redirect()->back()->with('danger', 'Detail fail to add!');
+        }
     }
 
     // Finish
@@ -52,7 +66,12 @@ class InstructorController extends Controller
             'status' => 'finish'
         ]);
 
-        if ($finish && $status && $cars) {
+        $detail = CourseDetail::create([
+            'course_id' => $enroll->id,
+            'detail' => 'Course Finished!'
+        ]);
+
+        if ($finish && $status && $cars && $detail) {
             return redirect('/instructor')->with('success', 'Course Finished!');
         } else {
             return redirect('/instructor')->with('danger', 'Course fail to finish!');

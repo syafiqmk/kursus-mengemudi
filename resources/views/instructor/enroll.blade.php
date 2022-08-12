@@ -35,4 +35,34 @@
             </td>
         </tr>
     </table>
+
+    <h3>Detail</h3>
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <form action="/instructor/enroll/{{ $enroll->id }}/detail" method="post">
+                @csrf
+                <div class="col-md mb-3 input-group">
+                    <input type="text" class="form-control" name="detail" id="" placeholder="Course Detail" autocomplete="off" required>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <th>#</th>
+            <th>Detail</th>
+            <th>Date</th>
+        </thead>
+        <tbody>
+            @foreach ($details as $detail)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $detail->detail }}</td>
+                    <td>{{ date('l, d M Y', strtotime($detail->created_at)) }} ({{ $detail->created_at->diffForHumans() }})</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 @endsection
