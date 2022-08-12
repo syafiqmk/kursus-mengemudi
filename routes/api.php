@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\ApiTransmissionController;
 use App\Http\Controllers\Api\Student\ApiStudentController;
 use App\Http\Controllers\Api\Admin\ApiAdminCourseController;
 use App\Http\Controllers\Api\Student\ApiStudentCarController;
+use App\Http\Controllers\Api\Admin\ApiAdminInstructorController;
 use App\Http\Controllers\Api\Instructor\ApiInstructorController;
 use App\Http\Controllers\Api\Student\ApiStudentCourseController;
 use App\Http\Controllers\Api\Student\ApiStudentPackageController;
@@ -72,6 +73,13 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::get('/admin/payment', [ApiAdminCourseController::class, 'showAllPayment']);
         Route::get('/admin/payment/{course}', [ApiAdminCourseController::class, 'showPayment']);
         Route::put('/admin/payment/{course}/confirm', [ApiAdminCourseController::class, 'confirm']);
+
+        // Instructor
+        Route::get('/admin/instructor', [ApiAdminInstructorController::class, 'showAll']);
+        Route::post('/admin/instructor/create', [ApiAdminInstructorController::class, 'create']);
+        Route::get('/admin/instructor/{instructor}', [ApiAdminInstructorController::class, 'show']);
+        Route::put('/admin/instructor/{instructor}/edit', [ApiAdminInstructorController::class, 'edit']);
+        Route::delete('/admin/instructor/{instructor}/delete', [ApiAdminInstructorController::class, 'delete']);
     });
 
     // Middleware student
