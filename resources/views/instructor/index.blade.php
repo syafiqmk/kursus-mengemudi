@@ -10,13 +10,13 @@
             <th>Action</th>
         </thead>
         <tbody>
-            @foreach ($enrolls as $enroll)
+            @foreach ($courses as $course)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $enroll->package->name }}</td>
-                    <td>{{ $enroll->student->name }}</td>
+                    <td>{{ $course->package->name }}</td>
+                    <td>{{ $course->student->name }}</td>
                     <td>
-                        <a href="{{ route('instructor.course', $enroll->id) }}" class="btn btn-primary">Detail</a>
+                        <a href="{{ route('instructor.course', $course->id) }}" class="btn btn-primary">Detail</a>
                     </td>
                 </tr>
             @endforeach

@@ -5,28 +5,28 @@
         <tr>
             <td>Package</td>
             <td>:</td>
-            <td>{{ $enroll->package->name }}</td>
+            <td>{{ $course->package->name }}</td>
         </tr>
         <tr>
             <td>Student</td>
             <td>:</td>
-            <td>{{ $enroll->student->name }}</td>
+            <td>{{ $course->student->name }}</td>
         </tr>
         <tr>
             <td>Instructor</td>
             <td>:</td>
-            <td>{{ $enroll->instructor->name }}</td>
+            <td>{{ $course->instructor->name }}</td>
         </tr>
         <tr>
             <td>Car</td>
             <td>:</td>
-            <td>{{ $enroll->car->brand->name }} {{ $enroll->car->name }}, {{ $enroll->car->transmission->name }}, {{ $enroll->car->engine_capacity }} CC ({{ $enroll->car->registration_number }})</td>
+            <td>{{ $course->car->brand->name }} {{ $course->car->name }}, {{ $course->car->transmission->name }}, {{ $course->car->engine_capacity }} CC ({{ $course->car->registration_number }})</td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td>
-                <form action="{{ route('instructor.finish', $enroll->id) }}" method="post">
+                <form action="{{ route('instructor.finish', $course->id) }}" method="post">
                     @csrf
                     @method('PUT')
 
@@ -39,7 +39,7 @@
     <h3>Detail</h3>
     <div class="row justify-content-center">
         <div class="col-md-7">
-            <form action="{{ route('instructor.addDetail', $enroll->id) }}" method="post">
+            <form action="{{ route('instructor.addDetail', $course->id) }}" method="post">
                 @csrf
                 <div class="col-md mb-3 input-group">
                     <input type="text" class="form-control" name="detail" id="" placeholder="Course Detail" autocomplete="off" required>

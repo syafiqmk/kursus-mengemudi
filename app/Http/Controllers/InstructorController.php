@@ -14,20 +14,20 @@ use Illuminate\Support\Facades\Storage;
 
 class InstructorController extends Controller
 {
+    // Instructor index
     public function index() {
         return view('instructor.index', [
             'title' => 'Welcome, '. auth()->user()->name,
-            'enrolls' => Course::latest()->where([['instructor_id', auth()->user()->id], ['status', 'grant']])->get()
+            'courses' => Course::latest()->where([['instructor_id', auth()->user()->id], ['status', 'grant']])->get()
         ]);
     }
 
     // Course detail
-    public function enroll($enroll) {
-        $enroll = Course::find($enroll);
-        return view('instructor.enroll', [
-            'title' => $enroll->package->name . ' | ' . $enroll->student->name,
-            'enroll' => $enroll, 
-            'details' => CourseDetail::where('course_id', $enroll->id)->latest()->get()
+    public function course(Course $course) {
+        return view('instructor.course', [
+            'title' => $course->package->name . ' | ' . $course->student->name,
+            'course' => $course, 
+            'details' => CourseDetail::where('course_id', $course->id)->latest()->get()
         ]);
     }
 
@@ -50,10 +50,9 @@ class InstructorController extends Controller
     }
 
     // Finish
-    public function finish($enroll) {
-        $enroll = Course::find($enroll);
+    public function finish(Course $course) {
         $instructor = User::find(auth()->user()->id);
-        $car = Car::find($enroll->car_id);
+        $car = Car::find($course->car_id);
 
         $cars = $car->update([
             'status' => 'ready'
@@ -62,12 +61,12 @@ class InstructorController extends Controller
         $status = $instructor->update([
             'status' => 'ready'
         ]);
-        $finish = $enroll->update([
+        $finish = $course->update([
             'status' => 'finish'
         ]);
 
         $detail = CourseDetail::create([
-            'course_id' => $enroll->id,
+            'course_id' => $course->id,
             'detail' => 'Course Finished!'
         ]);
 
@@ -87,6 +86,7 @@ class InstructorController extends Controller
         ]);
     }
 
+    // Profile edit
     public function profileEdit(Request $request) {
         $user = User::find(auth()->user()->id);
         $oldPass = auth()->user()->getAuthPassword();
