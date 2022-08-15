@@ -75,4 +75,7 @@ Route::middleware('isInstructor')->name('instructor.')->group(function() {
     Route::put('/instructor/course/{course}/finish', [InstructorController::class, 'finish'])->name('finish');
     Route::get('/instructor/profile', [InstructorController::class, 'profile'])->name('profile');
     Route::put('/instructor/profile/edit', [InstructorController::class, 'profileEdit'])->name('profileEdit');
+
+    Route::get('/instructor/history', [InstructorController::class, 'history'])->name('history');
+    Route::get('/instructor/history/{course}', [InstructorController::class, 'historyDetail'])->name('historyDetail');
 });

@@ -77,6 +77,23 @@ class InstructorController extends Controller
         }
     }
 
+    // Course history
+    public function history() {
+        return view('instructor.history', [
+            'title' => 'Courses History',
+            'courses' => Course::where('instructor_id', auth()->user()->id)->where('status', 'finish')->latest()->get(),
+        ]);
+    }
+
+    // Course history detail 
+    public function historyDetail(Course $course) {
+        return view('instructor.historyDetail', [
+            'title' => 'Course History Detail',
+            'course' => $course,
+            'details' => CourseDetail::where('course_id', $course->id)->latest()->get()
+        ]);
+    }
+
 
     // profiles
     public function profile() {

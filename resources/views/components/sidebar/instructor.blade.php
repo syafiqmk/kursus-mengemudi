@@ -8,7 +8,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ (Request::is('instructor/history/*')) ? 'active' : '' }}" aria-current="page" href="#">
+            <a class="nav-link {{ (Request::is('instructor/history/*')) ? 'active' : '' }}" aria-current="page" href="{{ route('instructor.history') }}">
               <span data-feather="file-text" class="align-text-bottom"></span>
               History
             </a>
