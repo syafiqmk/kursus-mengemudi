@@ -68,11 +68,11 @@ Route::middleware('isStudent')->name('student.')->group(function() {
     Route::resource('/student/car', StudentCarController::class);
 });
 
-Route::middleware('isInstructor')->group(function() {
-    Route::get('/instructor', [InstructorController::class ,'index']);
-    Route::get('/instructor/enroll/{enroll}', [InstructorController::class, 'enroll']);
-    Route::post('/instructor/enroll/{course}/detail', [InstructorController::class, 'detail']);
-    Route::put('/instructor/enroll/{enroll}/finish', [InstructorController::class, 'finish']);
-    Route::get('/instructor/profile', [InstructorController::class, 'profile']);
-    Route::put('/instructor/profile/edit', [InstructorController::class, 'profileEdit']);
+Route::middleware('isInstructor')->name('instructor.')->group(function() {
+    Route::get('/instructor', [InstructorController::class ,'index'])->name('index');
+    Route::get('/instructor/enroll/{enroll}', [InstructorController::class, 'enroll'])->name('course');
+    Route::post('/instructor/enroll/{course}/detail', [InstructorController::class, 'detail'])->name('addDetail');
+    Route::put('/instructor/enroll/{enroll}/finish', [InstructorController::class, 'finish'])->name('finish');
+    Route::get('/instructor/profile', [InstructorController::class, 'profile'])->name('profile');
+    Route::put('/instructor/profile/edit', [InstructorController::class, 'profileEdit'])->name('profileEdit');
 });

@@ -72,9 +72,9 @@ class InstructorController extends Controller
         ]);
 
         if ($finish && $status && $cars && $detail) {
-            return redirect('/instructor')->with('success', 'Course Finished!');
+            return redirect()->route('instructor.index')->with('success', 'Course Finished!');
         } else {
-            return redirect('/instructor')->with('danger', 'Course fail to finish!');
+            return redirect()->route('instructor.index')->with('danger', 'Course fail to finish!');
         }
     }
 
@@ -126,12 +126,12 @@ class InstructorController extends Controller
             }
 
             if($update) {
-                return redirect('/instructor/profile')->with('success', 'Profile updated!');
+                return redirect()->route('instructor.profile')->with('success', 'Profile updated!');
             } else {
-                return redirect('/instructor/profile')->with('danger', 'Profile fail to update!');
+                return redirect()->route('instructor.profile')->with('danger', 'Profile fail to update!');
             }
         } else {
-            return redirect('/instructor/profile')->with('warning', 'Wrong Password!');
+            return redirect()->route('instructor.profile')->with('warning', 'Wrong Password!');
         }
     }
 }

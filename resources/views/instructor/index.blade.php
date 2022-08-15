@@ -16,7 +16,7 @@
                     <td>{{ $enroll->package->name }}</td>
                     <td>{{ $enroll->student->name }}</td>
                     <td>
-                        <a href="/instructor/enroll/{{ $enroll->id }}" class="btn btn-primary">Detail</a>
+                        <a href="{{ route('instructor.course', $enroll->id) }}" class="btn btn-primary">Detail</a>
                     </td>
                 </tr>
             @endforeach

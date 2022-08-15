@@ -4,7 +4,7 @@
 
     <div class="row d-flex justify-content-center">
         <div class="col-md-7">
-            <form action="/instructor/profile/edit" method="post" enctype="multipart/form-data">
+            <form action="{{ route('instructor.profileEdit') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 
