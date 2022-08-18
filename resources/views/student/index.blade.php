@@ -14,7 +14,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $package->name }}</td>
                     <td>
-                        <a href="{{ route('student.enroll', $package->id) }}" class="btn btn-primary">Detail</a>
+                        <a href="{{ route('student.package', $package->id) }}" class="btn btn-primary">Detail</a>
                     </td>
                 </tr>
             @endforeach

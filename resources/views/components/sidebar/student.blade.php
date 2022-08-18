@@ -14,9 +14,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ (Request::is('student/enrollment')) ? 'active' : '' }}" aria-current="page" href="{{ route('student.enrollment') }}">
+            <a class="nav-link {{ (Request::is('student/course*')) ? 'active' : '' }}" aria-current="page" href="{{ route('student.courses') }}">
               <span data-feather="package" class="align-text-bottom"></span>
-              Enrollment
+              Courses
             </a>
           </li>
           

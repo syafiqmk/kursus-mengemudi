@@ -5,29 +5,29 @@
         <tr>
             <td>Package</td>
             <td>:</td>
-            <td>{{ $enroll->package->name }}</td>
+            <td>{{ $course->package->name }}</td>
         </tr>
         <tr>
             <td>Car</td>
             <td>:</td>
-            <td>{{ $enroll->car->brand->name }} {{ $enroll->car->name }} {{ $enroll->car->transmission->name }} {{ $enroll->car->engine_capacity }} CC ({{ $enroll->car->registration_number }})</td>
+            <td>{{ $course->car->brand->name }} {{ $course->car->name }} {{ $course->car->transmission->name }} {{ $course->car->engine_capacity }} CC ({{ $course->car->registration_number }})</td>
         </tr>
         <tr>
             <td>Package Price</td>
             <td>:</td>
-            <td>Rp. {{ number_format($enroll->package->price, 2, ',', '.') }}</td>
+            <td>Rp. {{ number_format($course->package->price, 2, ',', '.') }}</td>
         </tr>
         <tr>
             <td>Car Rent Price</td>
             <td>:</td>
-            <td>Rp. {{ number_format($enroll->car->price, 2, ',', '.') }}</td>
+            <td>Rp. {{ number_format($course->car->price, 2, ',', '.') }}</td>
         </tr>
         <tr>
             <td>Total</td>
             <td>:</td>
-            <td>Rp. {{ number_format(($enroll->package->price + $enroll->car->price), 2, ',', '.') }}</td>
+            <td>Rp. {{ number_format(($course->package->price + $course->car->price), 2, ',', '.') }}</td>
         </tr>
-        <form action="/student/enroll/pay/process/{{ $enroll->id }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('student.payProcess', $course->id) }}" method="post" enctype="multipart/form-data">
             @csrf
 
             <tr>

@@ -21,8 +21,7 @@ class StudentController extends Controller
         ]);
     }
 
-    public function enroll($id) {
-        $package = Package::find($id);
+    public function package(Package $package) {
         return view('student.enroll', [
             'title' => $package->name,
             'package' => $package,
@@ -30,60 +29,56 @@ class StudentController extends Controller
         ]);
     }
 
-    public function enrollProcess($package, $car) {
-        $carg = Car::find($car);
-
-        $status = $carg->update([
+    public function enrollProcess(Package $package, Car $car) {
+        $status = $car->update([
             'status' => 'not ready',
         ]);
         $enroll = Course::create([
             'student_id' => auth()->user()->id,
-            'package_id' => $package,
-            'car_id' => $car,
+            'package_id' => $package->id,
+            'car_id' => $car->id,
             'status' => 'enroll',
         ]);
 
 
         if ($enroll && $status) {
-            return redirect('/student/enrollment')->with('success', 'Berhasil Enroll Paket!');
+            return redirect()->route('student.courses')->with('success', 'Berhasil Enroll Paket!');
         } else {
-            return redirect('/student')->with('danger', 'Gagal Enroll Paket!');
+            return redirect()->route('student.index')->with('danger', 'Gagal Enroll Paket!');
         }
     }
 
-    public function enrollment() {
-        return view('student.enrollment', [
-            'title' => 'Enrollment',
-            'enrolls' => Course::latest()->where('student_id', auth()->user()->id)->get(),
+    public function courses() {
+        return view('student.courses', [
+            'title' => 'Courses',
+            'courses' => Course::latest()->where('student_id', auth()->user()->id)->get(),
         ]);
     }
 
-    public function pay($enroll) {
+    public function pay(Course $course) {
         return view('student.pay', [
             'title' => 'Pay for Package Enrollment',
-            'enroll' => Course::find($enroll)
+            'course' => $course
         ]);
     }
 
-    public function payProcess($enroll, Request $request) {
-        $enroll = Course::find($enroll);
-
+    public function payProcess(Course $course, Request $request) {
         $credentials = $request->validate([
             'image' => 'required|image|file'
         ]);
 
         if($request->file('image')) {
             $credentials['image'] = $request->file('image')->store('images/payment');
-            $update = $enroll->update([
+            $update = $course->update([
                 'payment_image' => $credentials['image'],
                 'status' => 'wait'
             ]);
         }
 
         if($update) {
-            return redirect('/student/enrollment')->with('success', 'Enrollment Payment Success');
+            return redirect()->route('student.courses')->with('success', 'Enrollment Payment Success');
         } else {
-            return redirect('/student/enrollment')->with('danger', 'Enrollment Payment Failed');
+            return redirect()->route('student.courses')->with('danger', 'Enrollment Payment Failed');
         }
     }
 

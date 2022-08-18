@@ -13,7 +13,7 @@
                         <h5 class="card-title">{{ $car->brand->name }} {{ $car->name }}</h5>
                         <p>{{ $car->engine_capacity }} CC, {{ $car->transmission->name }}, {{ $car->status }}</p>
                         <div class="d-flex justify-content-center">
-                            <form action="/student/enroll/{{ $package->id }}/{{ $car->id }}" method="post">
+                            <form action="{{ route('student.enrollProcess', [$package->id, $car->id]) }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">Enroll</button>
                             </form>
@@ -33,7 +33,7 @@
                         <p>{{ $car->engine_capacity }} CC, {{ $car->transmission->name }}, {{ $car->status }}</p>
                         <p>Rp. {{ number_format($car->price, 2, ',', '.') }}</p>
                         <div class="d-flex justify-content-center">
-                            <form action="/student/enroll/{{ $package->id }}/{{ $car->id }}" method="post">
+                            <form action="{{ route('student.enrollProcess', [$package->id, $car->id]) }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">Enroll</button>
                             </form>
