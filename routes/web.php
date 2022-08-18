@@ -59,9 +59,12 @@ Route::middleware('isStudent')->name('student.')->group(function() {
     Route::get('/student', [StudentController::class, 'index'])->name('index');
     Route::get('/student/course/{package}', [StudentController::class, 'package'])->name('package');
     Route::post('/student/course/{package}/{car}', [StudentController::class, 'enrollProcess'])->name('enrollProcess');
+
     Route::get('/student/courses', [StudentController::class, 'courses'])->name('courses');
     Route::get('/student/course/pay/{course}', [StudentController::class, 'pay'])->name('pay');
     Route::post('/student/course/pay/process/{course}', [StudentController::class, 'payProcess'])->name('payProcess');
+    Route::get('/student/course/detail/{course}', [StudentController::class, 'courseDetail'])->name('courseDetail');
+
     Route::get('/student/profile', [StudentController::class, 'profile'])->name('profile');
     Route::put('/student/profile/edit', [StudentController::class, 'profileEdit'])->name('profileEdit');
 

@@ -21,12 +21,12 @@
                         @elseif($course->status == 'grant')
                             <div class="btn-group">
                                 <span class="btn btn-primary">On Going</span>
-                                <a href="#" class="btn btn-success">Detail</a>
+                                <a href="{{ route('student.courseDetail', $course->id) }}" class="btn btn-success">Detail</a>
                             </div>
                             @elseif($course->status == 'finish')
                             <div class="btn-group">
                                 <span class="btn btn-primary">Finished</span>
-                                <a href="#" class="btn btn-success">Detail</a>
+                                <a href="{{ route('student.courseDetail', $course->id) }}" class="btn btn-success">Detail</a>
                             </div>
                         @endif
                     </td>

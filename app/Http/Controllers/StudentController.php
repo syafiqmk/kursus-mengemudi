@@ -6,6 +6,7 @@ use App\Models\Car;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Package;
+use App\Models\CourseDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -80,6 +81,15 @@ class StudentController extends Controller
         } else {
             return redirect()->route('student.courses')->with('danger', 'Enrollment Payment Failed');
         }
+    }
+
+    // Course detail
+    public function courseDetail(Course $course) {
+        return view('student.courseDetail', [
+            'title' => 'Course Detail',
+            'course' => $course,
+            'details' => CourseDetail::where('course_id', $course->id)->latest()->get()
+        ]);
     }
 
 
